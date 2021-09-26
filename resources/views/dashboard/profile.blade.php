@@ -1,22 +1,10 @@
 @extends('layouts.master')
+
+@section('title', 'Online Makaan || User Profile')
+@section('breadcrumb', 'User Profile')
+
 @section('content')
-<div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Profile</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">User Profile</li>
-            </ol>
-          </div>
-        </div>
-      </div><!-- /.container-fluid -->
-    </section>
+
 
     <!-- Main content -->
     <section class="content">
@@ -46,7 +34,7 @@
                         @if($user_detail->image)
                             <img src="{{ $user_detail->image }}" heigt="250px" width="250px" alt="">
                         @else
-                            <img src="{{ asset('storage/images/user_profile/1632656844_2055841.png') }}" heigt="250px" width="250px" alt="">
+                            <img src="{{ asset('storage/images/user_profile/avatar.png') }}" heigt="250px" width="250px" alt="">
                         @endif
                             <input type="file" class="form-control" name="uploadImage" id="uploadImage" placeholder="">
                         </div>
