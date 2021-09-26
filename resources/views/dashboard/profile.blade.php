@@ -39,13 +39,15 @@
                     <form class="form-horizontal" name="updaetProfile" id="updaetProfile" method="POST" action="/profile_update/{{ $user_detail->id }}" enctype="multipart/form-data">
                     @csrf
                     @foreach($user as $user_detail)
-                    <div class="form-group row">
-                        <div><img src="{{ $user_detail->image }}" id="" alt=""></div>
-                      </div>
+                    
                     <div class="form-group row">
                         <label for="uploadImage" class="col-sm-2 col-form-label">Photo</label>
                         <div class="col-sm-10">
-                            <img src="" heigt="50px" width="50px" alt="">
+                        @if($user_detail->image)
+                            <img src="{{ $user_detail->image }}" heigt="250px" width="250px" alt="">
+                        @else
+                            <img src="{{ asset('storage/images/user_profile/1632656844_2055841.png') }}" heigt="250px" width="250px" alt="">
+                        @endif
                             <input type="file" class="form-control" name="uploadImage" id="uploadImage" placeholder="">
                         </div>
                       </div>
