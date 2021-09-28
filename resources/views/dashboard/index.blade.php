@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('content')
 
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -23,6 +24,7 @@
 
     <!-- Main content -->
     <section class="content">
+      <h1>sonal</h1>
       <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row">
