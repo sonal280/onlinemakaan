@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PropertyController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,6 +26,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/profile', [UserController::class, 'index']);
 
     Route::post('/profile_update/{id}', [UserController::class, 'update']); 
+    Route::get('/start-post-property', [PropertyController::class, 'index']);
     
 });
 

@@ -2,7 +2,7 @@
 
 @section('title', 'Online Makaan || User Profile')
 @section('breadcrumb', 'User Profile')
-
+@section('heading', 'User Profile')
 @section('content')
 
 
@@ -36,7 +36,7 @@
                         @else
                             <img src="{{ asset('storage/images/user_profile/avatar.png') }}" heigt="250px" width="250px" alt="">
                         @endif
-                            <input type="file" class="form-control" name="uploadImage" id="uploadImage" placeholder="">
+                            <input type="file" class="btn btn-primary" name="uploadImage" id="uploadImage" placeholder="">
                         </div>
                       </div>
                       <div class="form-group row">
