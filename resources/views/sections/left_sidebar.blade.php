@@ -62,7 +62,7 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/start-post-property" class="nav-link">
                   <i class="fas fa-male nav-icon"></i>
                   <p>Post Property</p>
                 </a>
