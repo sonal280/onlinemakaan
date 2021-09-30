@@ -188,6 +188,8 @@ class AdminStatesSeeder extends Seeder
             'state' => 'CHATTISGARH',
             'status' => 1,
             'deleted' => 0,
-        ],);
+        ]);
+
+        
     }
 }
