@@ -6,9 +6,17 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Http\File;
 use Illuminate\Support\Facades\Storage;
+use App\Repositories\UserRepositoryInterface;
+
 
 class UserController extends Controller
 {
+    private $userRepository;
+
+    public function __construct(UserRepositoryInterface $userRepository)
+    {
+        $this->userRepository = $userRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +24,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::All();
+        $user =  $this->userRepository->currentUser();
         return view('dashboard.profile', [
-            'user'  =>  $user
+            'user_detail'  =>  $user
         ]);
     }
 
