@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\property;
+use App\Models\Property;
+use App\Repositories\PropertyRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PropertyController extends Controller
 {
@@ -12,9 +14,19 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $propertyRepository;
+    public function __construct(PropertyRepository $propertyRepository)
+    {
+        $this->propertyRepository = $propertyRepository;
+    }
+
     public function index()
     {
-        return view('dashboard.post_property_start_form');
+        $propertyType = $this->propertyRepository->fetchPropertyType();
+        // $listingProperty = $this->propertyRepository->fetchListingProperty();
+        return view('dashboard.post_property_start_form', [
+            'propertyTypes'  =>  $propertyType
+        ]);
     }
 
     /**
@@ -41,10 +53,10 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\property  $property
+     * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function show(property $property)
+    public function show(Property $property)
     {
         //
     }
@@ -52,10 +64,10 @@ class PropertyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\property  $property
+     * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function edit(property $property)
+    public function edit(Property $property)
     {
         //
     }
@@ -64,10 +76,10 @@ class PropertyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\property  $property
+     * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, property $property)
+    public function update(Request $request, Property $property)
     {
         //
     }
@@ -75,11 +87,19 @@ class PropertyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\property  $property
+     * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
     public function destroy(property $property)
     {
         //
     }
+
+    public function fetchListingProperty($id)
+    {
+
+        $listingProperty = $this->propertyRepository->fetchListingProperty($id);
+       return $listingProperty;
+    }
+
 }

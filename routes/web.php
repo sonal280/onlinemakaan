@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/profile_update/{id}', [UserController::class, 'update']); 
     Route::get('/start-post-property', [PropertyController::class, 'index']);
+    Route::get('/fetchListingProperty/{id}', [PropertyController::class, 'fetchListingProperty']);
     
 });
 
