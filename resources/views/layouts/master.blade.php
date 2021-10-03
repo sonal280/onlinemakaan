@@ -25,7 +25,9 @@
   <link rel="stylesheet" href="{{ asset('plugins/daterangepicker/daterangepicker.css') }} ">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }} ">
-   <link rel="stylesheet" href="{{ asset('css/dashboard/custom.css') }} ">
+   <link rel="stylesheet" href="{{ asset('css/dashboard/custom.css') }}">
+   <link rel="stylesheet" href="{{ asset('plugins/select2/css/select2.min.css') }}">
+   <link rel="stylesheet" href="{{ asset('plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
     <div class="wrapper">
@@ -103,6 +105,11 @@
 <script src="{{ asset('dist/js/demo.js') }} "></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ asset('dist/js/pages/dashboard.js') }} "></script>
+
+<script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('js/dashboard/custom.js') }} "></script>
+
+
+
 </body>
 </html>
