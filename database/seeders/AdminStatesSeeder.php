@@ -13,12 +13,16 @@ class AdminStatesSeeder extends Seeder
      */
     public function run()
     {
+<<<<<<< HEAD
         $states = [[
+=======
+        $state = [[
+>>>>>>> d8fec16ee18add006b7c57995f2647a5716ec635
             'country_id' => 2,
             'state' => 'ANDHRA PRADESH',
             'status' => 1,
             'deleted' => 0,
-        ], [
+        ],[
             'country_id' => 2,
             'state' => 'ASSAM',
             'status' => 1,
@@ -188,8 +192,13 @@ class AdminStatesSeeder extends Seeder
             'state' => 'CHATTISGARH',
             'status' => 1,
             'deleted' => 0,
+<<<<<<< HEAD
         ]];
         DB::table('admin_states')->insert($states);
         
+=======
+        ],];
+        DB::table('admin_states')->insert($state);
+>>>>>>> d8fec16ee18add006b7c57995f2647a5716ec635
     }
 }

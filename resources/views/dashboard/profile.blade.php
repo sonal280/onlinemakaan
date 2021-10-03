@@ -22,11 +22,11 @@
               </div>
               <div class="card-body">
                 <div class="tab-content">      
-                    <!-- @foreach($user as $user_detail)  @endforeach -->               
+                                  
                   <div class="active tab-pane" id="profileView">
                     <form class="form-horizontal" name="updaetProfile" id="updaetProfile" method="POST" action="/profile_update/{{ $user_detail->id }}" enctype="multipart/form-data">
                     @csrf
-                    @foreach($user as $user_detail)
+                   
                     
                     <div class="form-group row">
                         <label for="uploadImage" class="col-sm-2 col-form-label">Photo</label>
@@ -65,7 +65,7 @@
                         </div>
                       </div>
                     </form>
-                    @endforeach
+                   
                   </div>
                   <!-- /.tab-pane -->
                 </div>
