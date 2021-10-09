@@ -27,8 +27,12 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::post('/profile_update/{id}', [UserController::class, 'update']); 
     Route::get('/start-post-property', [PropertyController::class, 'index']);
-    Route::get('/fetchListingProperty/{id}', [PropertyController::class, 'fetchListingProperty']);
     
+    Route::get('/fetchListingProperty/{id}', [PropertyController::class, 'fetchListingProperty']);
+
+    Route::get('/fetchListingCities/{state_id}', [PropertyController::class, 'fetchListingCity']);
+    Route::get('/property_type', [PropertyController::class, 'fetchPropertyType']);
+
 });
 
 require __DIR__.'/auth.php';

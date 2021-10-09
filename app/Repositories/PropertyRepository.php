@@ -19,4 +19,18 @@ class PropertyRepository{
         $data = DB::table($table)->where('propertytype', $id)->get();
         return $data;
     }
+
+    public function fetchStates()
+    {
+        $table = 'admin_states';
+        $data = DB::table($table)->get();
+        return $data;
+    }
+
+    public function fetchListingCity($state_id)
+    {
+        $table = 'admin_districts';
+        $data = DB::table($table)->where('state_id', $state_id)->get();
+        return $data;
+    }
 }

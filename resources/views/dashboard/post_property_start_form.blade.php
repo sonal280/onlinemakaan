@@ -11,8 +11,9 @@
                 <div class="form-group">
                   <label>Property Type:</label>
                   <select class="form-control select2 property_type" style="width: 100%;">
+                  <option selected="selected">Select Property Type</option>
                   @foreach($propertyTypes as $propertyType)
-                    <option selected="selected" value = "{{$propertyType->id}}">{{$propertyType->name}}</option>
+                    <option  value = "{{$propertyType->id}}">{{$propertyType->name}}</option>
                   @endforeach
                   </select>
                 </div>
@@ -26,31 +27,13 @@
                 </div>
               </div>
             </div>
+
+            <button class="btn btn-primary" id="startpostbtn">Start for post property</button>
         </div>
 
 
-        <div class="card-body" id="form-step-2">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Property Type:</label>
-                  <select class="form-control select2 property_type" style="width: 100%;">
-                  @foreach($propertyTypes as $propertyType)
-                    <option selected="selected" value = "{{$propertyType->id}}">{{$propertyType->name}}</option>
-                  @endforeach
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>List Property For:</label>
-                  <select class="form-control select2 pre_property_listingtypes" style="width: 100%;">
-                  </select>
-                </div>
-              </div>
-            </div>
-        </div>
+        @include('dashboard.property_form.step_two')
+        @include('dashboard.property_form.step_three')
 </div>
    
 

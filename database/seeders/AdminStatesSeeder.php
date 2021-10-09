@@ -185,7 +185,7 @@ class AdminStatesSeeder extends Seeder
             'deleted' => 0,
         ],[
             'country_id' => 2,
-            'state' => 'CHATTISGARH',
+            'state' => 'CHHATTISGARH',
             'status' => 1,
             'deleted' => 0,
         ]];

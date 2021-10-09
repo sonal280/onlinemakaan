@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class AdminDistrictSeeder extends Seeder
 {
@@ -2999,5 +3000,7 @@ class AdminDistrictSeeder extends Seeder
             'status' => 1,
             'deleted' => 0,
         ],];
+
+        DB::table('admin_districts')->insert($state);
     }
 }

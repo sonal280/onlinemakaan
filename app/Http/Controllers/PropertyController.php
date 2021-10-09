@@ -23,9 +23,11 @@ class PropertyController extends Controller
     public function index()
     {
         $propertyType = $this->propertyRepository->fetchPropertyType();
+        $states = $this->propertyRepository->fetchStates();
         // $listingProperty = $this->propertyRepository->fetchListingProperty();
         return view('dashboard.post_property_start_form', [
-            'propertyTypes'  =>  $propertyType
+            'propertyTypes'  =>  $propertyType,
+            'states'  =>  $states
         ]);
     }
 
@@ -100,6 +102,20 @@ class PropertyController extends Controller
 
         $listingProperty = $this->propertyRepository->fetchListingProperty($id);
        return $listingProperty;
+    }
+
+    public function fetchListingCity($state_id)
+    {
+
+        $city = $this->propertyRepository->fetchListingCity($state_id);
+       return $city;
+    }
+
+    public function fetchPropertyType()
+    {
+
+        $propertyType = $this->propertyRepository->fetchPropertyType();
+       return $propertyType;
     }
 
 }
