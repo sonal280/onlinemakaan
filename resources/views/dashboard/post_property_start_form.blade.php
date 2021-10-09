@@ -34,6 +34,8 @@
 
         @include('dashboard.property_form.step_two')
         @include('dashboard.property_form.step_three')
+        @include('dashboard.property_form.step_four')
+        @include('dashboard.property_form.aminities')
 </div>
    
 

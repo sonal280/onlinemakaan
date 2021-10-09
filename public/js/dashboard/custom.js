@@ -105,12 +105,11 @@ $('#next_three').click(function(){
     localStorage.setItem('form_step_three', JSON.stringify(form_step_three));
 
      $('#form-step-3').hide();
-     $('#form-step-4').show();
+     $('#form-step-5').show();
 });
 
 $('document').ready(() =>{
-    //alert('hj');
-    onlineMakaan.getLsData('form-step-1');
+   
     $.ajax({
         url: '/property_type',
         success:function(result){
@@ -138,6 +137,22 @@ var onlineMakaan = {
             form_step_data = JSON.parse(localStorage.getItem($key));
             return form_step_data;
         }
-    }
+    },
+
+
+    processOnlineMakaanGetAjax: (url, datas) => {
+         $.ajax({
+                url: url,
+                data: datas,
+                dataType: 'json',
+                type: 'GET',
+                success:(result) => {
+                    console.log('result');
+                    console.log(result);
+                }
+            });
+    },
+
+    
 }
 
