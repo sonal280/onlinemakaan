@@ -6,7 +6,7 @@
               <div class="col-md-6 col-md-offset-3">
                 <div class="form-group">
                   <label>Price:</label>
-                  <input type="text" class="form-control" name="locality" id="locality">
+                  <input type="text" class="form-control" name="price" id="price">
                 </div>
               </div>
             </div>
@@ -22,10 +22,10 @@
 
             <div class="row">
               <div class="col-md-6">
-                <button class="btn btn-primary previous pull-left" id="previous_first">Previous</button>
+                <button class="btn btn-primary previous pull-left" id="previous_three">Previous</button>
               </div>
               <div class="col-md-6">
-                <button class="btn btn-primary Next pull-right" id="next_two">Next</button>
+                <button class="btn btn-primary Next pull-right" id="next_four">Next</button>
               </div>
             </div>
         </div>

@@ -34,6 +34,17 @@
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css') }}">
   <!-- Bootstrap4 Duallistbox -->
   <link rel="stylesheet" href="{{ asset('plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css')}}">
+
+  <link rel="stylesheet" href="{{ asset('css/dashboard/pic_upload.css')}}">
+  
+  
+  <link rel="stylesheet" href="{{ asset('css/dashboard/smooth.css')}}">
+
+
+  <!------------------------------------------------------------------------------------------------------->
+
+    <!-- <link type="text/css" rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/themes/smoothness/jquery-ui.min.css" media="screen" /> -->
+	<!-- <link type="text/css" rel="stylesheet" href="https://www.plupload.com/plupload/js/jquery.ui.plupload/css/jquery.ui.plupload.css" media="screen" /> -->
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -115,6 +126,14 @@
 
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
 <script src="{{ asset('js/dashboard/custom.js') }} "></script>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://www.plupload.com/plupload/js/plupload.full.min.js"></script>
+<script type="text/javascript" src="https://www.plupload.com/plupload/js/jquery.ui.plupload/jquery.ui.plupload.min.js"></script>
+
 
 
 
