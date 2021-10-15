@@ -225,7 +225,7 @@ $(function () {
         },
         runtimes: 'html5,flash,silverlight,html4',
         url: "/upload_images",
-        
+
         // Maximum file size
         max_file_size: '2000mb',
 
@@ -233,10 +233,10 @@ $(function () {
 
         // Resize images on clientside if we can
         resize: {
-            width: 200,
-            height: 200,
+            width: 800,
+            height: 800,
             quality: 90,
-            crop: true // crop to exact dimensions
+            crop: false // crop to exact dimensions
         },
 
         // Specify what files to browse for
@@ -268,7 +268,7 @@ $(function () {
                 $('#PhotoUploaded').append('<input type="hidden" name="file_name[]" id="file_name" value="' + obj.newfilename + '" />');
             }
         },
-        
+
 
         // Flash settings
         flash_swf_url: '/plupload/js/Moxie.swf',
@@ -280,7 +280,7 @@ $(function () {
 
 
 $('#propertyForm').submit(function (e) {
-   e.preventDefault();
+    e.preventDefault();
     var formData = new FormData($('#propertyForm')[0]);
     var form_step_one = onlineMakaan.getLsData('form-step-1');
     var form_step_two = onlineMakaan.getLsData('form_step_two');
@@ -288,14 +288,21 @@ $('#propertyForm').submit(function (e) {
     var form_step_four = onlineMakaan.getLsData('form_step_four');
     var amenities = onlineMakaan.getLsData('amenities');
     var furnishing = onlineMakaan.getLsData('furnishing');
-  
+    formData.append('form_step_one', JSON.stringify(form_step_one));
+    formData.append('form_step_two', JSON.stringify(form_step_two));
+    formData.append('form_step_three', JSON.stringify(form_step_three));
+    formData.append('form_step_four', JSON.stringify(form_step_four));
+    formData.append('amenities', JSON.stringify(amenities));
+    formData.append('furnishing', JSON.stringify(furnishing));
+    
+
     $.ajax({
         'url': '/store-property',
         'headers': {
             'X-CSRF-TOKEN': $('input[name="_token"]').val()
         },
         'method': 'POST',
-        'data': amenities,
+        'data': formData,
         'contentType': false,
         'processData': false,
         'cache': false,
