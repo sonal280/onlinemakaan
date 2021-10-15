@@ -6,6 +6,7 @@ use App\Models\Property;
 use App\Repositories\PropertyRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class PropertyController extends Controller
 {
@@ -49,7 +50,7 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -116,6 +117,20 @@ class PropertyController extends Controller
 
         $propertyType = $this->propertyRepository->fetchPropertyType();
        return $propertyType;
+    }
+
+    public function multipleImages(Request $request)
+    {
+        $file = $request->file('file')->getClientOriginalName();
+        
+        $extension = $request->file('file')->guessExtension();
+        $newImageName =  time().'.'.$file;
+
+        // $request->file->move(public_path('images'), $newImageName);
+
+        $filepath = $request->file('file')->storeAs('images/property/', $newImageName, 'public');
+
+
     }
 
 }

@@ -7,7 +7,8 @@
                     <h3 class="box-title">Upload Property Image</h3>
                 </div>
                 <div class="box-body pad">
-                    <form role="form" action="photo/add-process.php" method="post" onsubmit="return validateform()" name="form">
+                    <form role="form" method="post" name="form" id="propertyForm" enctype="multipart/form-data">
+                    @csrf
                         <div class="box-body">
                             <div class="row">
                                 <div class="form-group col-md-12">
@@ -17,7 +18,7 @@
                             </div>
                         </div>
                         <div class="box-footer">
-                            <button type="submit" name="submit" class="btn btn-primary pull-right" onclick="return confirmation()">Upload</button>
+                            <button type="submit" name="submit" class="btn btn-primary pull-right" >Upload</button>
                         </div>
                     </form>
                 </div>
@@ -26,3 +27,4 @@
     </div>
 
 </section>
+

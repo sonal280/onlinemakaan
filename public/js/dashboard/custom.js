@@ -164,7 +164,7 @@ $("#furnishing").change(function () {
         $(".furnishing ").show();
     } else if (checkFurnishing == "Unfurnished") {
         $(".furnishing ").hide();
-    } 
+    }
 });
 
 
@@ -219,32 +219,48 @@ var onlineMakaan = {
 
 $(function () {
     $("#uploader").plupload({
-        runtimes: 'html5',
-        url: "upload.php",
-        max_file_size: '2mb',
-        chunk_size: '1mb',
-        multi_selection: true,
-        resize: {
-            width: 500,
-            height: 500,
-            quality: 90
+        // General settings
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
         },
-        filters: [
-            { title: "Image files", extensions: "jpeg,jpg,png" }
-        ],
-        multipart: true,
+        runtimes: 'html5,flash,silverlight,html4',
+        url: "/upload_images",
+        
+        // Maximum file size
+        max_file_size: '2000mb',
 
+        chunk_size: '1mb',
+
+        // Resize images on clientside if we can
+        resize: {
+            width: 200,
+            height: 200,
+            quality: 90,
+            crop: true // crop to exact dimensions
+        },
+
+        // Specify what files to browse for
+        filters: [
+            { title: "Image files", extensions: "jpg,gif,png" },
+            { title: "Zip files", extensions: "zip,avi" }
+        ],
+
+        // Rename files by clicking on their titles
         rename: true,
 
+        // Sort files
         sortable: true,
 
+        // Enable ability to drag'n'drop files onto the widget (currently only HTML5 supports that)
         dragdrop: true,
 
+        // Views to activate
         views: {
             list: true,
-            thumbs: true,
+            thumbs: true, // Show thumbs
             active: 'thumbs'
         },
+
         init: {
             FileUploaded: function (up, file, info) {
                 console.log(info);
@@ -252,8 +268,41 @@ $(function () {
                 $('#PhotoUploaded').append('<input type="hidden" name="file_name[]" id="file_name" value="' + obj.newfilename + '" />');
             }
         },
+        
+
+        // Flash settings
         flash_swf_url: '/plupload/js/Moxie.swf',
+
+        // Silverlight settings
         silverlight_xap_url: '/plupload/js/Moxie.xap'
     });
 });
+
+
+$('#propertyForm').submit(function (e) {
+   e.preventDefault();
+    var formData = new FormData($('#propertyForm')[0]);
+    var form_step_one = onlineMakaan.getLsData('form-step-1');
+    var form_step_two = onlineMakaan.getLsData('form_step_two');
+    var form_step_three = onlineMakaan.getLsData('form_step_three');
+    var form_step_four = onlineMakaan.getLsData('form_step_four');
+    var amenities = onlineMakaan.getLsData('amenities');
+    var furnishing = onlineMakaan.getLsData('furnishing');
+  
+    $.ajax({
+        'url': '/store-property',
+        'headers': {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val()
+        },
+        'method': 'POST',
+        'data': amenities,
+        'contentType': false,
+        'processData': false,
+        'cache': false,
+        success: function (data) {
+            window.location = data;
+        },
+    });
+});
+
 
