@@ -147,6 +147,13 @@ $('#previous_house').click(function () {
     $('#property-type-1').hide();
     $('#form-step-2').show();
 });
+
+$('#previous_flat').click(function () {
+    $('#property-type-2').hide();
+    $('#form-step-2').show();
+});
+
+
 $('#previous_plot').click(function () {
     $('#property-type-3').hide();
     $('#form-step-2').show();
@@ -217,6 +224,40 @@ $('#next_house').click(function () {
     $(`#property-type-${property_type}`).hide();
     $('#form-step-4').show();
 });
+
+$('#next_flat').click(function () {
+    var superBuiltupArea = $("#superBuiltupArea").val();
+    var builtUpArea = $("#builtUpArea").val();
+    var carpetArea = $("#carpetArea").val();
+    var bedrooms = $("#bedrooms").val();
+    var bathrooms = $("#bathrooms").val();
+    var balconies = $("#balconies").val();
+    var totalFloors = $("#totalFloors").val();
+    var propertyOnFloor = $("#propertyOnFloor").val();
+    var parking = $("#parking").val();
+    var availability = $("#availability").val();
+    var flooring = $("#flooring").val();
+
+    var form_step_three = {
+        'superBuiltupArea': superBuiltupArea,
+        'builtUpArea': builtUpArea,
+        'carpetArea': carpetArea,
+        'bedrooms': bedrooms,
+        'bathrooms': bathrooms,
+        'balconies': balconies,
+        'totalFloors': totalFloors,
+        'propertyOnFloor': propertyOnFloor,
+        'parking': parking,
+        'availability': availability,
+        'flooring': flooring
+    };
+    localStorage.setItem('form_step_three', JSON.stringify(form_step_three));
+    var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
+    var property_type = property_type_detail.property_type;
+    $(`#property-type-${property_type}`).hide();
+    $('#form-step-4').show();
+});
+
 
 $('#previous_three').click(function () {
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
