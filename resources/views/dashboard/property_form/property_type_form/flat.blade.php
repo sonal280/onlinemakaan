@@ -4,13 +4,15 @@
                 <div class="form-group">
                   <label>Super Built Up Area:</label>
                   <input type="text" class="form-control" name="superBuiltupArea" id="superBuiltupArea">
+                  <span id="superBuiltupArea_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
 
               <div class="col-md-4">
                 <div class="form-group">
                   <label>Built Up Area:</label>
-                  <input type="text" class="form-control" name="builtUpArea" id="builtUpArea">
+                  <input type="text" class="form-control" name="builtUpArea" id="builtUpAreaflat">
+                  <span id="builtUpAreaflat_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
 
@@ -18,6 +20,7 @@
                 <div class="form-group">
                   <label>Carpet Area:</label>
                   <input type="text" class="form-control" name="carpetArea" id="carpetArea">
+                  <span id="carpetArea_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
             </div>
@@ -27,7 +30,11 @@
                 <div class="form-group">
                     <label for="bedrooms">Bedrooms</label>
                     <select name="bedrooms" id="bedrooms" class="form-control">
-                        <option value="1">1</option>
+                     <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -36,7 +43,11 @@
                 <div class="form-group">
                     <label for="bathrooms">Bathrooms</label>
                     <select name="bathrooms" id="bathrooms" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -45,7 +56,11 @@
                 <div class="form-group">
                     <label for="balconies">Balconies</label>
                     <select name="balconies" id="balconies" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -56,7 +71,11 @@
                 <div class="form-group">
                     <label for="bedrooms">Total Floor</label>
                     <select name="totalFloors" id="totalFloors" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=50; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -65,7 +84,11 @@
                 <div class="form-group">
                     <label for="propertyOnFloor">Property On Floor</label>
                     <select name="propertyOnFloor" id="propertyOnFloor" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=50; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -74,7 +97,11 @@
                 <div class="form-group">
                     <label for="parking">Parking</label>
                     <select name="parking" id="parking" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>

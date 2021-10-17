@@ -8,6 +8,7 @@
                         </div>
                         <div class="col-md-2">
                             <input type='text' class="form-control" id="plotareaa" name="plotarea" required>
+                            <span id="plotareaa_span" style="display: none;">This feild is required!</span>
                         </div>
                         <div class="col-md-4">
                             <label for="">Floor allowed for construction :</label>
@@ -29,6 +30,7 @@
                         </div>
                         <div class="col-md-4">
                             <input type='date' class="form-control" id="possession" name="possession" required>
+                            <span id="possession_span" style="display: none;">This feild is required!</span>
                         </div>
                     </div><br><br>
                     <div class='row'>

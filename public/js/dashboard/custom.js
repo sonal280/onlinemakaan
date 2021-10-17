@@ -98,36 +98,24 @@ $('#next_two').click(function () {
     }
     
     if(locality == ''){
-        $('#locality_span').show();
-        $('#locality').addClass('errorDiv');
-        $('#locality_span').addClass('errorColor');
+        onlineMakaan.setError('locality');
         return false;
     }else{
-        $('#locality_span').hide();
-        $('#locality').removeClass('errorDiv');
-        $('#locality_span').removeClass('errorColor');
+        onlineMakaan.removeError('locality');
     } 
     
     if(street == ''){
-        $('#street_span').show();
-        $('#street').addClass('errorDiv');
-        $('#street_span').addClass('errorColor');
+        onlineMakaan.setError('street');
         return false;
     }else{
-        $('#street_span').hide();
-        $('#street').removeClass('errorDiv');
-        $('#street_span').removeClass('errorColor');
+        onlineMakaan.removeError('street');
     } 
     
     if(colonyname == ''){
-        $('#colonyname_span').show();
-        $('#colonyname').addClass('errorDiv');
-        $('#colonyname_span').addClass('errorColor');
+        onlineMakaan.setError('colonyname');
         return false;
     }else{
-        $('#colonyname_span').hide();
-        $('#colonyname').removeClass('errorDiv');
-        $('#colonyname_span').removeClass('errorColor');
+        onlineMakaan.removeError('colonyname');
     }
 
     var form_step_two = { 'states': states, 'cities': cities, 'locality': locality, 'street': street, 'colonyname': colonyname, 'hideaddress': hideaddress };
@@ -163,6 +151,23 @@ $('#next_plot').click(function () {
     var floorallowed = $("#floorallowed").val();
     var possession = $("#possession").val();
     var boundary = $(".radio").val();
+    console.log('possession');
+    console.log(possession);
+    if(plotArea == ''){
+        onlineMakaan.setError('plotareaa');
+        return false;
+    }else{
+        onlineMakaan.removeError('plotareaa');
+    }
+
+    if(possession == ''){
+        onlineMakaan.setError('possession');
+        return false;
+    }else{
+        onlineMakaan.removeError('possession');
+    }
+
+
     var form_step_three = {
         'plotArea': plotArea,
         'floorallowed': floorallowed,
@@ -187,25 +192,17 @@ $('#next_house').click(function () {
     var flooring = $("#flooring").val();
 
     if(plotArea == ''){
-        $('#plotArea_span').show();
-        $('#plotArea').addClass('errorDiv');
-        $('#plotArea_span').addClass('errorColor');
+        onlineMakaan.setError('plotArea');
         return false;
     }else{
-        $('#plotArea_span').hide();
-        $('#plotArea').removeClass('errorDiv');
-        $('#plotArea_span').removeClass('errorColor');
+        onlineMakaan.removeError('plotArea');
     }
 
     if(builtUpArea == ''){
-        $('#builtUpArea_span').show();
-        $('#builtUpArea').addClass('errorDiv');
-        $('#builtUpArea_span').addClass('errorColor');
+        onlineMakaan.setError('builtUpArea');
         return false;
     }else{
-        $('#builtUpArea_span').hide();
-        $('#builtUpArea').removeClass('errorDiv');
-        $('#builtUpArea_span').removeClass('errorColor');
+        onlineMakaan.removeError('builtUpArea');
     }
     var form_step_three = {
         'plotArea': plotArea,
@@ -227,7 +224,7 @@ $('#next_house').click(function () {
 
 $('#next_flat').click(function () {
     var superBuiltupArea = $("#superBuiltupArea").val();
-    var builtUpArea = $("#builtUpArea").val();
+    var builtUpArea = $("#builtUpAreaflat").val();
     var carpetArea = $("#carpetArea").val();
     var bedrooms = $("#bedrooms").val();
     var bathrooms = $("#bathrooms").val();
@@ -237,6 +234,25 @@ $('#next_flat').click(function () {
     var parking = $("#parking").val();
     var availability = $("#availability").val();
     var flooring = $("#flooring").val();
+
+    if(superBuiltupArea == ''){
+        onlineMakaan.setError('superBuiltupArea');
+        return false;
+    }else{
+        onlineMakaan.removeError('superBuiltupArea');
+    }
+    if(builtUpArea == ''){
+        onlineMakaan.setError('builtUpAreaflat');
+        return false;
+    }else{
+        onlineMakaan.removeError('builtUpAreaflat');
+    }
+    if(carpetArea == ''){
+        onlineMakaan.setError('carpetArea');
+        return false;
+    }else{
+        onlineMakaan.removeError('carpetArea');
+    }
 
     var form_step_three = {
         'superBuiltupArea': superBuiltupArea,
@@ -269,6 +285,18 @@ $('#previous_three').click(function () {
 $('#next_four').click(function () {
     var price = $("#price").val();
     var description = $("#description").val();
+    if(price == ''){
+        onlineMakaan.setError('price');
+        return false;
+    }else{
+        onlineMakaan.removeError('price');
+    }
+    if(description == ''){
+        onlineMakaan.setError('description');
+        return false;
+    }else{
+        onlineMakaan.removeError('description');
+    }
     var form_step_four = { 'price': price, 'description': description };
     localStorage.setItem('form_step_four', JSON.stringify(form_step_four));
     $('#form-step-4').hide();
@@ -366,6 +394,21 @@ var onlineMakaan = {
             form_step_data = JSON.parse(localStorage.getItem($key));
             return form_step_data;
         }
+    },
+
+
+    setError: (key) => {
+        $(`#${key}_span`).show();
+        $(`#${key}`).addClass('errorDiv');
+        $(`#${key}_span`).addClass('errorColor');
+        return false;
+    },
+
+
+    removeError: (key) => {
+        $(`#${key}_span`).hide();
+        $(`#${key}`).removeClass('errorDiv');
+        $(`#${key}_span`).removeClass('errorColor');
     },
 
 

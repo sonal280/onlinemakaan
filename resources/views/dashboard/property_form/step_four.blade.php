@@ -7,6 +7,7 @@
                 <div class="form-group">
                   <label>Price:</label>
                   <input type="text" class="form-control" name="price" id="price">
+                  <span id="price_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
             </div>
@@ -16,6 +17,7 @@
                 <div class="form-group">
                 <label>Description:</label>
                 <textarea class="form-control" name="" id="description" cols="30" rows="10"></textarea>
+                <span id="description_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
             </div>

@@ -29,7 +29,11 @@
                 <div class="form-group">
                     <label for="bedrooms">Bedrooms</label>
                     <select name="bedrooms" id="bedrooms" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -38,7 +42,11 @@
                 <div class="form-group">
                     <label for="bathrooms">Bathrooms</label>
                     <select name="bathrooms" id="bathrooms" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -47,7 +55,11 @@
                 <div class="form-group">
                     <label for="balconies">Balconies</label>
                     <select name="balconies" id="balconies" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -58,7 +70,11 @@
                 <div class="form-group">
                     <label for="bedrooms">Total Floor</label>
                     <select name="totalFloors" id="totalFloors" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=50; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
@@ -67,7 +83,11 @@
                 <div class="form-group">
                     <label for="parking">Parking</label>
                     <select name="parking" id="parking" class="form-control">
-                        <option value="1">1</option>
+                    <?php
+                        for($i=1; $i<=10; $i++){
+                          echo '<option value="'.$i.'">'.$i.'</option>';  
+                        }
+                     ?>
                     </select>
                 </div>
               </div>
