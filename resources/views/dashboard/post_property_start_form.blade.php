@@ -37,6 +37,7 @@
         <!-- @include('dashboard.property_form.step_three') -->
         @include('dashboard.property_form.property_type_form.house')
         @include('dashboard.property_form.property_type_form.plot')
+        @include('dashboard.property_form.property_type_form.flat')
         @include('dashboard.property_form.step_four')
         @include('dashboard.property_form.aminities')
         @include('dashboard.property_form.property_upload')
