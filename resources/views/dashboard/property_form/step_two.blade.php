@@ -28,6 +28,7 @@
                 <div class="form-group">
                   <label>Locality:</label>
                   <input type="text" class="form-control" name="locality" id="locality">
+                  <span id="locality_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
 
@@ -35,6 +36,7 @@
                 <div class="form-group">
                   <label>Street/House No.:</label>
                   <input type="text" class="form-control" name="street" id="street">
+                  <span id="street_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
 
@@ -42,6 +44,7 @@
                 <div class="form-group">
                   <label>Project/Colony name:</label>
                   <input type="text" class="form-control" name="colonyname" id="colonyname">
+                  <span id="colonyname_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
             </div>

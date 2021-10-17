@@ -4,6 +4,7 @@
                 <div class="form-group">
                   <label>Plot Area:</label>
                   <input type="text" class="form-control" name="plotArea" id="plotArea">
+                  <span id="plotArea_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
 
@@ -11,6 +12,7 @@
                 <div class="form-group">
                   <label>Built Up Area:</label>
                   <input type="text" class="form-control" name="builtUpArea" id="builtUpArea">
+                  <span id="builtUpArea_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
 

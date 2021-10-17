@@ -34,6 +34,9 @@ $('.property_type').change(function () {
 
 
 $('#states').change(function () {
+    $('.select2-selection').removeClass('errorDiv');
+    $('#states_span').removeClass('errorColor');
+    $('#states_span').hide();
     var state_id = $(this).val();
     $('#cities').find('option').remove();
     $.ajax({
@@ -84,8 +87,47 @@ $('#next_two').click(function () {
 
     console.log(states);
     if(states==0){
+        $('.select2-selection').addClass('errorDiv');
+        $('#states_span').addClass('errorColor');
         $('#states_span').show();
         return false;
+    }else{
+        $('.select2-selection').removeClass('errorDiv');
+        $('#states_span').removeClass('errorColor');
+        $('#states_span').hide();
+    }
+    
+    if(locality == ''){
+        $('#locality_span').show();
+        $('#locality').addClass('errorDiv');
+        $('#locality_span').addClass('errorColor');
+        return false;
+    }else{
+        $('#locality_span').hide();
+        $('#locality').removeClass('errorDiv');
+        $('#locality_span').removeClass('errorColor');
+    } 
+    
+    if(street == ''){
+        $('#street_span').show();
+        $('#street').addClass('errorDiv');
+        $('#street_span').addClass('errorColor');
+        return false;
+    }else{
+        $('#street_span').hide();
+        $('#street').removeClass('errorDiv');
+        $('#street_span').removeClass('errorColor');
+    } 
+    
+    if(colonyname == ''){
+        $('#colonyname_span').show();
+        $('#colonyname').addClass('errorDiv');
+        $('#colonyname_span').addClass('errorColor');
+        return false;
+    }else{
+        $('#colonyname_span').hide();
+        $('#colonyname').removeClass('errorDiv');
+        $('#colonyname_span').removeClass('errorColor');
     }
 
     var form_step_two = { 'states': states, 'cities': cities, 'locality': locality, 'street': street, 'colonyname': colonyname, 'hideaddress': hideaddress };
@@ -137,6 +179,27 @@ $('#next_house').click(function () {
     var availability = $("#availability").val();
     var flooring = $("#flooring").val();
 
+    if(plotArea == ''){
+        $('#plotArea_span').show();
+        $('#plotArea').addClass('errorDiv');
+        $('#plotArea_span').addClass('errorColor');
+        return false;
+    }else{
+        $('#plotArea_span').hide();
+        $('#plotArea').removeClass('errorDiv');
+        $('#plotArea_span').removeClass('errorColor');
+    }
+
+    if(builtUpArea == ''){
+        $('#builtUpArea_span').show();
+        $('#builtUpArea').addClass('errorDiv');
+        $('#builtUpArea_span').addClass('errorColor');
+        return false;
+    }else{
+        $('#builtUpArea_span').hide();
+        $('#builtUpArea').removeClass('errorDiv');
+        $('#builtUpArea_span').removeClass('errorColor');
+    }
     var form_step_three = {
         'plotArea': plotArea,
         'builtUpArea': builtUpArea,
@@ -377,5 +440,4 @@ $('#propertyForm').submit(function (e) {
         },
     });
 });
-
 
