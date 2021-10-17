@@ -7,3 +7,10 @@
     -webkit-user-select: none;
 }
 
+.errorDiv {
+    border: 2px solid red !important;
+}
+
+.errorColor{
+    color: red;
+}

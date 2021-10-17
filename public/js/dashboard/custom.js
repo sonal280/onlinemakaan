@@ -10,9 +10,15 @@ $(function () {
 });
 
 $('.property_type').change(function () {
+
+    $('.select2-selection').removeClass('errorDiv');
+    $('.property_type_span').removeClass('errorColor');
+    $('#property_type_span').hide();
     var propertytype = $('.property_type').val();
     //onlineMakaan.getLsData('form-step-1');
     $('.pre_property_listingtypes').find('option').remove();
+
+
     $.ajax({
         url: '/fetchListingProperty/' + propertytype,
         success: function (result) {
@@ -44,12 +50,23 @@ $('#states').change(function () {
 
 $('#startpostbtn').click(function () {
     var property_type = $('.property_type').val();
-    var pre_property_listingtypes = $('.pre_property_listingtypes').val();
-    var form_step_1 = { 'property_type': property_type, 'pre_property_listingtypes': pre_property_listingtypes };
-    localStorage.setItem('form-step-1', JSON.stringify(form_step_1));
-
-    $('#form-step-2').show();
-    $('#form-step-1').hide();
+    if(property_type==0){
+        $('#property_type_span').show();
+        $('.select2-selection').addClass('errorDiv');
+        $('#property_type_span').addClass('errorColor');
+        // $('.property_type').addClass("errorDiv");
+        return false;
+    }else{
+        $('.select2-selection').removeClass('errorDiv');
+        $('.property_type_span').removeClass('errorColor');
+        $('#property_type_span').hide();
+        var pre_property_listingtypes = $('.pre_property_listingtypes').val();
+        var form_step_1 = { 'property_type': property_type, 'pre_property_listingtypes': pre_property_listingtypes };
+        localStorage.setItem('form-step-1', JSON.stringify(form_step_1));
+        $('#form-step-2').show();
+        $('#form-step-1').hide();
+    }
+    
 });
 
 $('#previous_first').click(function () {
@@ -65,6 +82,12 @@ $('#next_two').click(function () {
     var colonyname = $("#colonyname").val();
     var hideaddress = $("#hideaddress").val();
 
+    console.log(states);
+    if(states==0){
+        $('#states_span').show();
+        return false;
+    }
+
     var form_step_two = { 'states': states, 'cities': cities, 'locality': locality, 'street': street, 'colonyname': colonyname, 'hideaddress': hideaddress };
     localStorage.setItem('form_step_two', JSON.stringify(form_step_two));
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
@@ -78,15 +101,34 @@ $('#next_two').click(function () {
 });
 
 
-$('#previous_second').click(function () {
-    $('#form-step-3').hide();
+$('#previous_house').click(function () {
+    $('#property-type-1').hide();
     $('#form-step-2').show();
 });
-
-$('#next_three').click(function () {
+$('#previous_plot').click(function () {
+    $('#property-type-3').hide();
+    $('#form-step-2').show();
+});
+$('#next_plot').click(function () {
+    var plotArea = $("#plotareaa").val();
+    var floorallowed = $("#floorallowed").val();
+    var possession = $("#possession").val();
+    var boundary = $(".radio").val();
+    var form_step_three = {
+        'plotArea': plotArea,
+        'floorallowed': floorallowed,
+        'possession': possession,
+        'boundary': boundary,
+    };
+    localStorage.setItem('form_step_three', JSON.stringify(form_step_three));
+    var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
+    var property_type = property_type_detail.property_type;
+    $(`#property-type-${property_type}`).hide();
+    $('#form-step-4').show();
+});
+$('#next_house').click(function () {
     var plotArea = $("#plotArea").val();
     var builtUpArea = $("#builtUpArea").val();
-    var carpetArea = $("#carpetArea").val();
     var bedrooms = $("#bedrooms").val();
     var bathrooms = $("#bathrooms").val();
     var balconies = $("#balconies").val();
@@ -98,7 +140,6 @@ $('#next_three').click(function () {
     var form_step_three = {
         'plotArea': plotArea,
         'builtUpArea': builtUpArea,
-        'carpetArea': carpetArea,
         'bedrooms': bedrooms,
         'bathrooms': bathrooms,
         'balconies': balconies,
@@ -157,6 +198,11 @@ $('#next_five').click(function () {
     $('#form-step-5').hide();
 });
 
+$("#previous_step").click(function () {
+    $('#form-step-6').hide();
+    $('#form-step-5').show();
+});
+
 
 $("#furnishing").change(function () {
     var checkFurnishing = $(this).val();
@@ -169,7 +215,7 @@ $("#furnishing").change(function () {
 
 
 $('document').ready(() => {
-
+    
     $.ajax({
         url: '/property_type',
         success: function (result) {
@@ -181,6 +227,25 @@ $('document').ready(() => {
                         $('.property_type').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
                     } else {
                         $('.property_type').append(`<option value="${val.id}">${val.name}</option>`);
+                    }
+                });
+            }
+        }
+    });
+    var step1 = onlineMakaan.getLsData('form-step-1');
+    
+    $.ajax({
+        url: '/fetchListingProperty/'+step1.property_type,
+        success: function (result) {
+            console.log(result);
+            console.log(step1.pre_property_listingtypes);
+            if (step1) {
+                //$('.pre_property_listingtypes').find('option').remove();
+                $.each(result, function (i, val) {
+                    if (val.id == step1.pre_property_listingtypes) {
+                        $('.pre_property_listingtypes').append(`<option value="${val.id}" selected="selected">${val.name}</option>`)
+                    } else {
+                        $('.pre_property_listingtypes').append(`<option value="${val.id}">${val.name}</option>`)
                     }
                 });
             }
@@ -301,12 +366,13 @@ $('#propertyForm').submit(function (e) {
         'headers': {
             'X-CSRF-TOKEN': $('input[name="_token"]').val()
         },
-        'method': 'POST',
+        'method': 'POST', 
         'data': formData,
         'contentType': false,
         'processData': false,
         'cache': false,
         success: function (data) {
+            localStorage.clear();
             window.location = data;
         },
     });

@@ -1,14 +1,13 @@
-<div class="card">
-    <div class="card-body">
+
+    <div class="card-body" id="property-type-3" style="display: none;">
         <div class="row">
             <div class="col-md-8">
-                <form action='' method='post'>
                     <div class='row row-pad'>
                         <div class="col-md-2">
                             <label for="">Plot Area SQ.FT.</label>
                         </div>
                         <div class="col-md-2">
-                            <input type='text' class="form-control" id="plotarea" name="plotarea" required>
+                            <input type='text' class="form-control" id="plotareaa" name="plotarea" required>
                         </div>
                         <div class="col-md-4">
                             <label for="">Floor allowed for construction :</label>
@@ -38,21 +37,22 @@
                         </div>
                         <div class="col-md-6">
                             <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="boundary" value="Yes" checked="" class="custom-control-input"><span class="custom-control-label">Yes</span>
+                                <input type="radio" name="boundary" value="Yes" checked="" class="custom-control-input radio"><span class="custom-control-label">Yes</span>
                             </label>
                             <label class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" name="boundary" value="No" checked="" class="custom-control-input"><span class="custom-control-label">No</span>
+                                <input type="radio" name="boundary" value="No" checked="" class="custom-control-input radio"><span class="custom-control-label">No</span>
                             </label>
                         </div>
                     </div><br><br>
-                    <div class="row row-pad">
-                        <div class="col-md-8">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary previous pull-left" id="previous_plot">Previous</button>
                         </div>
-                        <div class="col-md-2">
-                            <input type='submit' name="submission" value="NEXT" class="form-control btn btn-info">
+                        <div class="col-md-6">
+                            <button class="btn btn-primary Next pull-right" id="next_plot">Next</button>
                         </div>
                     </div>
-                </form>
             </div>
         </div>
     </div>

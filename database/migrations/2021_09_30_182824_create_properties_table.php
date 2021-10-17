@@ -22,8 +22,7 @@ class CreatePropertiesTable extends Migration
             $table->unsignedBigInteger('propertytype');
             $table->float('price');
             $table->unsignedBigInteger('state');
-            $table->unsignedBigInteger('city');
-            
+            $table->unsignedBigInteger('city');            
             $table->string('locality');
             $table->string('street');
             $table->string('pro_col_name');
@@ -49,7 +48,6 @@ class CreatePropertiesTable extends Migration
             $table->string('facing');
             $table->string('amenities');
             $table->string('is_verified');
-            $table->unsignedBigInteger('status');
             $table->dateTime('date');
             $table->timestamps();
             $table->foreign('guest_user')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
@@ -57,8 +55,6 @@ class CreatePropertiesTable extends Migration
             $table->foreign('propertytype')->references('id')->on('pre_property_types')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('state')->references('id')->on('admin_states')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('city')->references('id')->on('admin_districts')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('status')->references('id')->on('pre_property_status')->onUpdate('cascade')->onDelete('cascade');
-            
         });
     }
 

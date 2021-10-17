@@ -4,11 +4,12 @@
                 <div class="form-group">
                   <label>State:</label>
                   <select class="form-control select2" id="states" style="width: 100%;">
-                  <option selected="selected">Select State</option>
+                  <option selected="selected" value="0">Select State</option>
                   @foreach($states as $state)
                     <option  value = "{{$state->id}}">{{$state->state}}</option>
                   @endforeach
                   </select>
+                  <span id="states_span" style="display: none;">This feild is required!</span>
                 </div>
               </div>
 

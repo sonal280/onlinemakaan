@@ -28,11 +28,11 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/profile_update/{id}', [UserController::class, 'update']); 
     Route::post('/upload_images', [PropertyController::class, 'multipleImages']); 
     Route::get('/start-post-property', [PropertyController::class, 'index']);
-    
+
+    Route::get('/property_type', [PropertyController::class, 'fetchPropertyType']);
     Route::get('/fetchListingProperty/{id}', [PropertyController::class, 'fetchListingProperty']);
 
     Route::get('/fetchListingCities/{state_id}', [PropertyController::class, 'fetchListingCity']);
-    Route::get('/property_type', [PropertyController::class, 'fetchPropertyType']);
     Route::post('/store-property', [PropertyController::class, 'store']); 
 
 });

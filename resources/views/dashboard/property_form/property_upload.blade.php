@@ -17,8 +17,14 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="box-footer">
-                            <button type="submit" name="submit" class="btn btn-primary pull-right" >Upload</button>
+
+                        <div class="row">
+                            <div class="box-footer col-md-6">
+                                <button type="submit" name="submit" class="btn btn-primary pull-right" >Upload</button>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary previous pull-left" id="previous_step">Previous</button>
+                            </div>
                         </div>
                     </form>
                 </div>

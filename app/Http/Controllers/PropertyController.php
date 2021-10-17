@@ -50,8 +50,8 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('file')->getClientOriginalName();
-        dd($file);
+        // dd($request);
+        $this->propertyRepository->storeData($request);
     }
 
     /**
@@ -124,8 +124,9 @@ class PropertyController extends Controller
     {
         $file = $request->file('file')->getClientOriginalName();
         $extension = $request->file('file')->guessExtension();
-        $newImageName =  date('dd-mm-yy').'.'.$file;
+        $newImageName =  time().date('dd-mm-yy').'.'.$file;
         $filepath = $request->file('file')->storeAs('images/property/', $newImageName, 'public');
+        die('{"jsonrpc" : "2.0", "result" : null, "id" : "id", "newfilename" : "'."$newImageName".'"}');
     }
 
 }

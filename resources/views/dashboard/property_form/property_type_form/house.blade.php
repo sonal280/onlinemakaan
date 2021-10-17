@@ -14,12 +14,12 @@
                 </div>
               </div>
 
-              <div class="col-md-4">
+              <!-- <div class="col-md-4">
                 <div class="form-group">
                   <label>Carpet Area:</label>
                   <input type="text" class="form-control" name="carpetArea" id="carpetArea">
                 </div>
-              </div>
+              </div> -->
             </div>
 
             <div class="row">
@@ -94,10 +94,10 @@
 
             <div class="row">
               <div class="col-md-6">
-                <button class="btn btn-primary previous pull-left" id="previous_second">Previous</button>
+                <button class="btn btn-primary previous pull-left" id="previous_house">Previous</button>
               </div>
               <div class="col-md-6">
-                <button class="btn btn-primary Next pull-right" id="next_three">Next</button>
+                <button class="btn btn-primary Next pull-right" id="next_house">Next</button>
               </div>
             </div>
         </div>
