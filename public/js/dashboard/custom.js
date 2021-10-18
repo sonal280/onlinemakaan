@@ -53,13 +53,13 @@ $('#states').change(function () {
 
 $('#startpostbtn').click(function () {
     var property_type = $('.property_type').val();
-    if(property_type==0){
+    if (property_type == 0) {
         $('#property_type_span').show();
         $('.select2-selection').addClass('errorDiv');
         $('#property_type_span').addClass('errorColor');
         // $('.property_type').addClass("errorDiv");
         return false;
-    }else{
+    } else {
         $('.select2-selection').removeClass('errorDiv');
         $('.property_type_span').removeClass('errorColor');
         $('#property_type_span').hide();
@@ -69,7 +69,7 @@ $('#startpostbtn').click(function () {
         $('#form-step-2').show();
         $('#form-step-1').hide();
     }
-    
+
 });
 
 $('#previous_first').click(function () {
@@ -86,35 +86,35 @@ $('#next_two').click(function () {
     var hideaddress = $("#hideaddress").val();
 
     console.log(states);
-    if(states==0){
+    if (states == 0) {
         $('.select2-selection').addClass('errorDiv');
         $('#states_span').addClass('errorColor');
         $('#states_span').show();
         return false;
-    }else{
+    } else {
         $('.select2-selection').removeClass('errorDiv');
         $('#states_span').removeClass('errorColor');
         $('#states_span').hide();
     }
-    
-    if(locality == ''){
+
+    if (locality == '') {
         onlineMakaan.setError('locality');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('locality');
-    } 
-    
-    if(street == ''){
+    }
+
+    if (street == '') {
         onlineMakaan.setError('street');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('street');
-    } 
-    
-    if(colonyname == ''){
+    }
+
+    if (colonyname == '') {
         onlineMakaan.setError('colonyname');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('colonyname');
     }
 
@@ -153,17 +153,17 @@ $('#next_plot').click(function () {
     var boundary = $(".radio").val();
     console.log('possession');
     console.log(possession);
-    if(plotArea == ''){
+    if (plotArea == '') {
         onlineMakaan.setError('plotareaa');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('plotareaa');
     }
 
-    if(possession == ''){
+    if (possession == '') {
         onlineMakaan.setError('possession');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('possession');
     }
 
@@ -191,17 +191,17 @@ $('#next_house').click(function () {
     var availability = $("#availability").val();
     var flooring = $("#flooring").val();
 
-    if(plotArea == ''){
+    if (plotArea == '') {
         onlineMakaan.setError('plotArea');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('plotArea');
     }
 
-    if(builtUpArea == ''){
+    if (builtUpArea == '') {
         onlineMakaan.setError('builtUpArea');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('builtUpArea');
     }
     var form_step_three = {
@@ -235,22 +235,22 @@ $('#next_flat').click(function () {
     var availability = $("#availability").val();
     var flooring = $("#flooring").val();
 
-    if(superBuiltupArea == ''){
+    if (superBuiltupArea == '') {
         onlineMakaan.setError('superBuiltupArea');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('superBuiltupArea');
     }
-    if(builtUpArea == ''){
+    if (builtUpArea == '') {
         onlineMakaan.setError('builtUpAreaflat');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('builtUpAreaflat');
     }
-    if(carpetArea == ''){
+    if (carpetArea == '') {
         onlineMakaan.setError('carpetArea');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('carpetArea');
     }
 
@@ -285,16 +285,16 @@ $('#previous_three').click(function () {
 $('#next_four').click(function () {
     var price = $("#price").val();
     var description = $("#description").val();
-    if(price == ''){
+    if (price == '') {
         onlineMakaan.setError('price');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('price');
     }
-    if(description == ''){
+    if (description == '') {
         onlineMakaan.setError('description');
         return false;
-    }else{
+    } else {
         onlineMakaan.removeError('description');
     }
     var form_step_four = { 'price': price, 'description': description };
@@ -347,7 +347,7 @@ $("#furnishing").change(function () {
 
 
 $('document').ready(() => {
-    
+
     $.ajax({
         url: '/property_type',
         success: function (result) {
@@ -365,9 +365,9 @@ $('document').ready(() => {
         }
     });
     var step1 = onlineMakaan.getLsData('form-step-1');
-    
+
     $.ajax({
-        url: '/fetchListingProperty/'+step1.property_type,
+        url: '/fetchListingProperty/' + step1.property_type,
         success: function (result) {
             console.log(result);
             console.log(step1.pre_property_listingtypes);
@@ -506,14 +506,14 @@ $('#propertyForm').submit(function (e) {
     formData.append('form_step_four', JSON.stringify(form_step_four));
     formData.append('amenities', JSON.stringify(amenities));
     formData.append('furnishing', JSON.stringify(furnishing));
-    
+
 
     $.ajax({
         'url': '/store-property',
         'headers': {
             'X-CSRF-TOKEN': $('input[name="_token"]').val()
         },
-        'method': 'POST', 
+        'method': 'POST',
         'data': formData,
         'contentType': false,
         'processData': false,

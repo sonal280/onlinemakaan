@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\MailController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,6 +36,8 @@ Route::group(['middleware' => 'auth'], function(){
 
     Route::get('/fetchListingCities/{state_id}', [PropertyController::class, 'fetchListingCity']);
     Route::post('/store-property', [PropertyController::class, 'store']); 
+    Route::get('/email-send', [EmailController::class, 'sendOtpViaEmail']); 
+    Route::get('/send-email', [MailController::class, 'sendEmail']);
 
 });
 
