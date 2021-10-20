@@ -7,6 +7,8 @@ use App\Repositories\PropertyRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Repositories\MailRepository;
+use App\Repositories\PropertyRepositoryInterface;
 
 class PropertyController extends Controller
 {
@@ -15,10 +17,11 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private $propertyRepository;
-    public function __construct(PropertyRepository $propertyRepository)
+    private $propertyRepository, $mailRepository;
+    public function __construct(PropertyRepositoryInterface $propertyRepository, MailRepository $mailRepository)
     {
         $this->propertyRepository = $propertyRepository;
+        $this->mailRepository = $mailRepository;
     }
 
     public function index()
@@ -52,6 +55,7 @@ class PropertyController extends Controller
     {
         // dd($request);
         $this->propertyRepository->storeData($request);
+        $this->mailRepository->sendEmail();
     }
 
     /**

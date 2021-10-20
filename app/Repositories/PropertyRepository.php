@@ -4,8 +4,9 @@ namespace App\Repositories;
 use Illuminate\Support\Facades\DB;
 use App\Models\Property;
 use App\Models\PropertyImage;
+use App\Http\Controllers\MailController;
 
-class PropertyRepository{
+class PropertyRepository implements PropertyRepositoryInterface{
     public function fetchPropertyType()
     {
         
@@ -86,7 +87,7 @@ class PropertyRepository{
         $property_data->items = implode(',', $furnishing);
         
         
-        $property_data->save();
+        $property_post = $property_data->save();
         $last_inserted_id = $property_data->id;
 
         $filename = $request->file_name;
@@ -97,4 +98,5 @@ class PropertyRepository{
             $property_image->save();
         }
     }
+    
 }
