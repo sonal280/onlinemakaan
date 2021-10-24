@@ -72,6 +72,7 @@
             </div>
         </div><!-- /.container-fluid -->
         </section>
+        
         @yield('content')
                 <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -133,7 +134,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
 <script type="text/javascript" src="https://www.plupload.com/plupload/js/plupload.full.min.js"></script>
 <script type="text/javascript" src="https://www.plupload.com/plupload/js/jquery.ui.plupload/jquery.ui.plupload.min.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 
 

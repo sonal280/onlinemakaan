@@ -97,6 +97,8 @@ class PropertyRepository implements PropertyRepositoryInterface{
             $property_image->image = $file;
             $property_image->save();
         }
+
+        
     }
     
 }

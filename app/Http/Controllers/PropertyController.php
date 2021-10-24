@@ -56,6 +56,7 @@ class PropertyController extends Controller
         // dd($request);
         $this->propertyRepository->storeData($request);
         $this->mailRepository->sendEmail();
+        // return true;
     }
 
     /**

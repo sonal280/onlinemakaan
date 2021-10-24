@@ -20,13 +20,19 @@
 
                         <div class="row">
                             <div class="box-footer col-md-6">
-                                <button type="submit" name="submit" class="btn btn-primary pull-right" >Upload</button>
+                                <button type="submit" name="submit" class="btn btn-primary pull-right upload_property" >Upload</button>
                             </div>
-                            <div class="col-md-6">
-                                <button class="btn btn-primary previous pull-left" id="previous_step">Previous</button>
+                           <div class="col-md-6"> 
+                               <input type="button" class="btn btn-primary previous pull-left" id="previous_last_step" value="Previous">
                             </div>
                         </div>
                     </form>
+                    <div id="divMsg" style="display:none">
+                        <img src="{{ asset('storage/images/loader.gif') }}" alt="Please wait.." />
+                    </div>
+                     <!-- <div class="col-md-6"> -->
+                                <!-- <button class="btn btn-primary previous pull-left" id="previous_last_step">Previous</button> -->
+                            <!-- </div> -->
                 </div>
             </div>
         </div>

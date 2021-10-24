@@ -330,7 +330,7 @@ $('#next_five').click(function () {
     $('#form-step-5').hide();
 });
 
-$("#previous_step").click(function () {
+$("#previous_last_step").click(function () {
     $('#form-step-6').hide();
     $('#form-step-5').show();
 });
@@ -346,8 +346,9 @@ $("#furnishing").change(function () {
 });
 
 
-$('document').ready(() => {
 
+
+$('document').ready(() => { 
     $.ajax({
         url: '/property_type',
         success: function (result) {
@@ -364,6 +365,10 @@ $('document').ready(() => {
             }
         }
     });
+    
+
+   
+
     var step1 = onlineMakaan.getLsData('form-step-1');
 
     $.ajax({
@@ -507,6 +512,18 @@ $('#propertyForm').submit(function (e) {
     formData.append('amenities', JSON.stringify(amenities));
     formData.append('furnishing', JSON.stringify(furnishing));
 
+    $('.upload_property').prop('disabled', true);
+    $('#divMsg').show();
+    $('#divMsg').css({
+        'position': 'absolute',
+        'top': '0px',
+        'left':'200px',
+    });
+
+    $('#divMsg img').css({
+        'height' : '250px',
+        'width': '250px'
+    });
 
     $.ajax({
         'url': '/store-property',
@@ -520,7 +537,16 @@ $('#propertyForm').submit(function (e) {
         'cache': false,
         success: function (data) {
             localStorage.clear();
-            window.location = data;
+            $('#divMsg').hide();
+            swal(
+                'Good job!',
+                'You clicked the button!',
+                'success'
+            );
+            
+            $(".swal-button--confirm").click(function () {
+                window.location.href = '/dashboard';
+            });
         },
     });
 });
