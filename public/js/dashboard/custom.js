@@ -377,7 +377,7 @@ $('document').ready(() => {
             console.log(result);
             console.log(step1.pre_property_listingtypes);
             if (step1) {
-                //$('.pre_property_listingtypes').find('option').remove();
+                $('.pre_property_listingtypes').find('option').remove();
                 $.each(result, function (i, val) {
                     if (val.id == step1.pre_property_listingtypes) {
                         $('.pre_property_listingtypes').append(`<option value="${val.id}" selected="selected">${val.name}</option>`)
@@ -388,6 +388,21 @@ $('document').ready(() => {
             }
         }
     });
+
+
+    var step2 = onlineMakaan.getLsData('form_step_two');
+    // console.log(step2.locality);
+    $('#locality').val(step2.locality);
+    $('#street').val(step2.street);
+    $('#colonyname').val(step2.colonyname);
+
+    var step3 = onlineMakaan.getLsData('form_step_three');
+    $('#plotArea').val(step3.plotArea);
+    $('#builtUpArea').val(step3.builtUpArea);
+
+    var step4 = onlineMakaan.getLsData('form_step_four');
+    $('#price').val(step4.price);
+    $('#description').val(step4.description);
 
 });
 
