@@ -30,15 +30,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/profile_update/{id}', [UserController::class, 'update']); 
     Route::post('/upload_images', [PropertyController::class, 'multipleImages']); 
     Route::get('/start-post-property', [PropertyController::class, 'index']);
-    Route::get('/all-property', [PropertyController::class, 'show']);
-    Route::get('/edit-property/{pro_id}', [PropertyController::class, 'edit']);
 
     Route::get('/property_type', [PropertyController::class, 'fetchPropertyType']);
     Route::get('/fetchListingProperty/{id}', [PropertyController::class, 'fetchListingProperty']);
 
-    Route::get('/states', [PropertyController::class, 'fetchStates']);
-
-    
     Route::get('/fetchListingCities/{state_id}', [PropertyController::class, 'fetchListingCity']);
     Route::post('/store-property', [PropertyController::class, 'store']); 
     // Route::get('/email-send', [EmailController::class, 'sendOtpViaEmail']); 

@@ -16,10 +16,10 @@
 
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="WaterStorage" name="amenities" value="Water Storage"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="VisitorParking" name="amenities" value="Visitor Parking"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="Park" name="amenities" value="Park"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="FengShui" name="amenities" value="Feng Shui / Vaastu Compliant"></td>
+                            <td><input type='checkbox' class="form-control" id="WaterStorage" name="amenities" value="Water Storage"></td>
+                            <td><input type='checkbox' class="form-control" id="VisitorParking" name="amenities" value="Visitor Parking"></td>
+                            <td><input type='checkbox' class="form-control" id="Park" name="amenities" value="Park"></td>
+                            <td><input type='checkbox' class="form-control" id="FengShui" name="amenities" value="Feng Shui / Vaastu Compliant"></td>
 
                         </tr>
                         <tr align="center">
@@ -29,10 +29,10 @@
                             <th>Maintenance Staff</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="WasteDisposal" name="amenities" value="Waste Disposal"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="PrivateGarden" name="amenities" value="Private Garden / Terrace"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="WaterHarvesting" name="amenities" value="Rain Water Harvesting"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="MaintenanceStaff" name="amenities" value="Maintenance Staff"></td>
+                            <td><input type='checkbox' class="form-control" id="WasteDisposal" name="amenities" value="Waste Disposal"></td>
+                            <td><input type='checkbox' class="form-control" id="PrivateGarden" name="amenities" value="Private Garden / Terrace"></td>
+                            <td><input type='checkbox' class="form-control" id="WaterHarvesting" name="amenities" value="Rain Water Harvesting"></td>
+                            <td><input type='checkbox' class="form-control" id="MaintenanceStaff" name="amenities" value="Maintenance Staff"></td>
                         </tr>
 
                     </table>
@@ -51,17 +51,17 @@
                             <th>Piped-gas</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="Security" name="amenities" value="Security / Fire Alarm"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="AirConditioned" name="amenities" value="Centrally Air Conditioned"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="Pipedgas" name="amenities" value="Piped-gas"></td>
+                            <td><input type='checkbox' class="form-control" id="Security" name="amenities" value="Security / Fire Alarm"></td>
+                            <td><input type='checkbox' class="form-control" id="AirConditioned" name="amenities" value="Centrally Air Conditioned"></td>
+                            <td><input type='checkbox' class="form-control" id="Piped-gas" name="amenities" value="Piped-gas"></td>
                         </tr>
                         <tr align="center">
                             <th>Internet/wi-fi connectivity</th>
                             <th>Water purifier</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="wifi" name="amenities" value="Internet/wi-fi connectivity"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="Waterpurifie" name="amenities" value="Water purifier"></td>
+                            <td><input type='checkbox' class="form-control" id="wi-fi" name="amenities" value="Internet/wi-fi connectivity"></td>
+                            <td><input type='checkbox' class="form-control" id="Waterpurifie" name="amenities" value="Water purifier"></td>
                         </tr>
 
                     </table>
@@ -76,15 +76,15 @@
                             <th>Club house / Community Center</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="SwimmingPool" name="amenities" value="Swimming Pool"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="GYM" name="amenities" value="Fitness Centre / GYM"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="Clubhouse" name="amenities" value="Club house / Community Center"></td>
+                            <td><input type='checkbox' class="form-control" id="SwimmingPool" name="amenities" value="Swimming Pool"></td>
+                            <td><input type='checkbox' class="form-control" id="GYM" name="amenities" value="Fitness Centre / GYM"></td>
+                            <td><input type='checkbox' class="form-control" id="Clubhouse" name="amenities" value="Club house / Community Center"></td>
                         </tr>
                         <tr align="center">
                             <th>Security Personnel</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="SecurityPersonnel" name="amenities" value="Security Personnel"></td>
+                            <td><input type='checkbox' class="form-control" id="SecurityPersonnel" name="amenities" value="Security Personnel"></td>
                         </tr>
 
                     </table>
@@ -98,7 +98,7 @@
                             <th>Bank Attached Property</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="BankAttached" name="amenities" value="Bank Attached Property"></td>
+                            <td><input type='checkbox' class="form-control" id="BankAttached" name="amenities" value="Bank Attached Property"></td>
                         </tr>
                     </table>
                 </div>
@@ -111,8 +111,8 @@
                             <th>Borewell/Tank</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="Municipalcorporation" name="amenities" value="Municipal corporation"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="Borewell" name="amenities" value="Borewell/Tank"></td>
+                            <td><input type='checkbox' class="form-control" id="Municipalcorporation" name="amenities" value="Municipal corporation"></td>
+                            <td><input type='checkbox' class="form-control" id="Borewell" name="amenities" value="Borewell/Tank"></td>
                         </tr>
                     </table>
                 </div>
@@ -127,16 +127,16 @@
                             <th>Pool</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="Garden" name="amenities" value="Park/Garden"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="MainRoad" name="amenities" value="Main Road"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="Club" name="amenities" value="Club"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="Pool" name="amenities" value="Pool"></td>
+                            <td><input type='checkbox' class="form-control" id="Garden" name="amenities" value="Park/Garden"></td>
+                            <td><input type='checkbox' class="form-control" id="MainRoad" name="amenities" value="Main Road"></td>
+                            <td><input type='checkbox' class="form-control" id="Club" name="amenities" value="Club"></td>
+                            <td><input type='checkbox' class="form-control" id="Pool" name="amenities" value="Pool"></td>
                         </tr>
                         <tr align="center">
                             <th>Others</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="Others" name="amenities" value="Others"></td>
+                            <td><input type='checkbox' class="form-control" id="Others" name="amenities" value="Others"></td>
                         </tr>
                     </table>
                 </div>
@@ -151,10 +151,10 @@
                             <th>Wheelchair Friendly</th>
                         </tr>
                         <tr align="center">
-                            <td><input type='checkbox' class="form-control amenities" id="gatedsociety" name="amenities" value="In a gated society"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="CornerProperty" name="amenities" value="Corner Property"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="PetFriendly" name="amenities" value="Pet Friendly"></td>
-                            <td><input type='checkbox' class="form-control amenities" id="WheelchairFriendly" name="amenities" value="Wheelchair Friendly"></td>
+                            <td><input type='checkbox' class="form-control" id="gatedsociety" name="amenities" value="In a gated society"></td>
+                            <td><input type='checkbox' class="form-control" id="CornerProperty" name="amenities" value="Corner Property"></td>
+                            <td><input type='checkbox' class="form-control" id="PetFriendly" name="amenities" value="Pet Friendly"></td>
+                            <td><input type='checkbox' class="form-control" id="WheelchairFriendly" name="amenities" value="Wheelchair Friendly"></td>
                         </tr>
                     </table>
                 </div>
@@ -184,9 +184,9 @@
 
                         </tr>
                         <tr align="center">
-                            <td><input type="checkbox" class="form-control" id="Wardrobs" name="furnishing" value="Wardrobs"></td>
-                            <td><input type="checkbox" class="form-control" id="Fans" name="furnishing" value="Fans"></td>
-                            <td><input type="checkbox" class="form-control" id="Beds" name="furnishing" value="Beds"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Wardrobs"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Fans"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Beds"></td>
                         </tr>
                         <tr align="center">
                             <th>Lights</th>
@@ -194,9 +194,9 @@
                             <th>Fridge</th>
                         </tr>
                         <tr align="center">
-                            <td><input type="checkbox" class="form-control" id="Lights" name="furnishing" value="Lights"></td>
-                            <td><input type="checkbox" class="form-control" id="ModulerKitchen" name="furnishing" value="Moduler Kitchen"></td>
-                            <td><input type="checkbox" class="form-control" id="Fridge" name="furnishing" value="Fridge"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Lights"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Moduler Kitchen"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Fridge"></td>
                         </tr>
                         <tr align="center">
                             <th>AC</th>
@@ -205,10 +205,10 @@
                             <th>Stove</th>
                         </tr>
                         <tr align="center">
-                            <td><input type="checkbox" class="form-control" id="AC" name="furnishing" value="AC"></td>
-                            <td><input type="checkbox" class="form-control" id="Geyser" name="furnishing" value="Geyser"></td>
-                            <td><input type="checkbox" class="form-control" id="TV" name="furnishing" value="TV"></td>
-                            <td><input type="checkbox" class="form-control" id="Stove" name="furnishing" value="Stove"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="AC"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Geyser"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="TV"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Stove"></td>
                         </tr>
 
                         <tr align="center">
@@ -218,10 +218,10 @@
                             <th>Curtains</th>
                         </tr>
                         <tr align="center">
-                            <td><input type="checkbox" class="form-control" id="WashingMachine" name="furnishing" value="Washing Machine"></td>
-                            <td><input type="checkbox" class="form-control" id="WaterPurifire" name="furnishing" value="Water Purifire"></td>
-                            <td><input type="checkbox" class="form-control" id="Microwave" name="furnishing" value="Microwave"></td>
-                            <td><input type="checkbox" class="form-control" id="Curtains" name="furnishing" value="Curtains"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Washing Machine"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Water Purifire"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Microwave"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Curtains"></td>
                         </tr>
                         <tr align="center">
                             <th>Chimney</th>
@@ -230,10 +230,10 @@
                             <th>Dinning Table</th>
                         </tr>
                         <tr align="center">
-                            <td><input type="checkbox" class="form-control" id="Chimney" name="furnishing" value="Chimney"></td>
-                            <td><input type="checkbox" class="form-control" id="Exhaustfan" name="furnishing" value="Exhaust fan"></td>
-                            <td><input type="checkbox" class="form-control" id="Sofa" name="furnishing" value="Sofa"></td>
-                            <td><input type="checkbox" class="form-control" id="DinningTable" name="furnishing" value="Dinning Table"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Chimney"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Exhaust fan"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Sofa"></td>
+                            <td><input type="checkbox" class="form-control" id="superbuiltup" name="furnishing" value="Dinning Table"></td>
                         </tr>
 
                     </table>
