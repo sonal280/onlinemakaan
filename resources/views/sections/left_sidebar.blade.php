@@ -68,7 +68,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="" class="nav-link">
+                <a href="/all-property" class="nav-link">
                   <i class="fas fa-handshake nav-icon"></i>
                   <p>All Property</p>
                 </a>

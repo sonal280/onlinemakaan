@@ -67,7 +67,10 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        //
+        $all_property = $this->propertyRepository->getAllProperty();
+        return view('dashboard.all_property', [
+            'all_property' => $all_property
+        ]);
     }
 
     /**
@@ -76,9 +79,16 @@ class PropertyController extends Controller
      * @param  \App\Models\Property  $property
      * @return \Illuminate\Http\Response
      */
-    public function edit(Property $property)
+    public function edit(Property $property, $pro_id)
     {
-        //
+        $property_data = Property::where('pro_id', $pro_id)->firstOrFail();
+        $propertyType = $this->propertyRepository->fetchPropertyType();
+        $states = $this->propertyRepository->fetchStates();
+        return view('dashboard.post_property_start_form', [
+            'property_data' => $property_data,
+            'propertyTypes'  =>  $propertyType,
+            'states'  =>  $states
+        ]);
     }
 
     /**
@@ -104,20 +114,6 @@ class PropertyController extends Controller
         //
     }
 
-    public function fetchListingProperty($id)
-    {
-
-        $listingProperty = $this->propertyRepository->fetchListingProperty($id);
-       return $listingProperty;
-    }
-
-    public function fetchListingCity($state_id)
-    {
-
-        $city = $this->propertyRepository->fetchListingCity($state_id);
-       return $city;
-    }
-
     public function fetchPropertyType()
     {
 
@@ -125,6 +121,27 @@ class PropertyController extends Controller
        return $propertyType;
     }
 
+    public function fetchListingProperty($id)
+    {
+
+        $listingProperty = $this->propertyRepository->fetchListingProperty($id);
+       return $listingProperty;
+    }
+
+    public function fetchStates()
+    {
+        $fetchStates = $this->propertyRepository->fetchStates();
+        return $fetchStates;
+    }
+
+    public function fetchListingCity($state_id)
+    {
+
+        $city = $this->propertyRepository->fetchListingCity($state_id);
+        return $city;
+    }
+
+   
     public function multipleImages(Request $request)
     {
         $file = $request->file('file')->getClientOriginalName();

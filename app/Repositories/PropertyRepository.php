@@ -100,5 +100,11 @@ class PropertyRepository implements PropertyRepositoryInterface{
 
         
     }
+
+    public function getAllProperty()
+    {
+        $property = Property::all();
+        return $property;
+    }
     
 }

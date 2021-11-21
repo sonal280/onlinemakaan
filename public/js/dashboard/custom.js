@@ -1,3 +1,4 @@
+// const { each } = require("lodash");
 
 $(function () {
     //Initialize Select2 Elements
@@ -348,41 +349,108 @@ $("#furnishing").change(function () {
 
 
 
-$('document').ready(() => { 
+$('document').ready(() => {
+    
+        $.ajax({
+            url: '/property_type',
+            success: function (result) {
+                var data = onlineMakaan.getLsData('form-step-1');
+                if (data) {
+                    var pt = $('.property_type').val();
+                    $('.property_type').find('option').remove();
+                    if (pt) {
+                        $.each(result, function (i, val) {
+                            if (val.id == pt) {
+                                $('.property_type').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
+                            } else {
+                                $('.property_type').append(`<option value="${val.id}">${val.name}</option>`);
+                            }
+                        });
+                    }else{
+                        $.each(result, function (i, val) {
+                            if (val.id == data.property_type) {
+                                $('.property_type').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
+                            } else {
+                                $('.property_type').append(`<option value="${val.id}">${val.name}</option>`);
+                            }
+                        });
+                    }
+                    
+                }
+            }
+        });
+    
+    
+
+
     $.ajax({
-        url: '/property_type',
+        url: '/states',
         success: function (result) {
-            var data = onlineMakaan.getLsData('form-step-1');
-            if (data) {
-                $('.property_type').find('option').remove();
+            var data = onlineMakaan.getLsData('form_step_two');
+            // console.log(data);
+            if(data) {
+                $('#states').find('option').remove();
                 $.each(result, function (i, val) {
-                    if (val.id == data.property_type) {
-                        $('.property_type').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
+                    // console.log(val);
+                    if (val.id == data.states) {
+                        // console.log(val);return false;
+                        $('#states').append(`<option value="${val.id}" selected="selected">${val.state}</option>`);
+                    }
+                    else{
+                        $('#states').append(`<option value="${val.id}">${val.state}</option>`);
+                    }
+                })
+            }
+        }
+    });
+    
+    var step2 = onlineMakaan.getLsData('form_step_two');
+    // console.log(step2);
+    // return false;
+    $.ajax({
+        url: '/fetchListingCities/' + step2.states,
+        success: function (result) {
+            // console.log(step2);
+            // return false;
+            if (step2) {
+                $('#cities').find('option').remove();
+                $.each(result, function (i, val) {
+                    console.log(val);
+                    if (val.id == step2.cities) {
+                        $('#cities').append(`<option value="${val.id}" selected="selected">${val.district}</option>`);
                     } else {
-                        $('.property_type').append(`<option value="${val.id}">${val.name}</option>`);
+                        $('#cities').append(`<option value="${val.id}">${val.district}</option>`);
                     }
                 });
             }
         }
     });
-    
 
    
 
     var step1 = onlineMakaan.getLsData('form-step-1');
-
+    var pt = $('.property_type').val();
+    if (pt) {
+        var property_type = pt;
+    }else{
+        var property_type = step1.property_type;
+        alert(property_type);
+    }
+    // console.log(property_type);
+    return false;
     $.ajax({
-        url: '/fetchListingProperty/' + step1.property_type,
+        url: '/fetchListingProperty/' + property_type,
         success: function (result) {
             console.log(result);
-            console.log(step1.pre_property_listingtypes);
+            // console.log(step1.pre_property_listingtypes);
             if (step1) {
                 $('.pre_property_listingtypes').find('option').remove();
+
                 $.each(result, function (i, val) {
                     if (val.id == step1.pre_property_listingtypes) {
-                        $('.pre_property_listingtypes').append(`<option value="${val.id}" selected="selected">${val.name}</option>`)
+                        $('.pre_property_listingtypes').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
                     } else {
-                        $('.pre_property_listingtypes').append(`<option value="${val.id}">${val.name}</option>`)
+                        $('.pre_property_listingtypes').append(`<option value="${val.id}">${val.name}</option>`);
                     }
                 });
             }
@@ -399,11 +467,41 @@ $('document').ready(() => {
     var step3 = onlineMakaan.getLsData('form_step_three');
     $('#plotArea').val(step3.plotArea);
     $('#builtUpArea').val(step3.builtUpArea);
-
+    $('#bedrooms').val(step3.bedrooms).find(`option[value= ${step3.bedrooms} ]`).attr('selected', true);
+    $('#bathrooms').val(step3.bathrooms).find(`option[value= ${step3.bathrooms} ]`).attr('selected', true);
+    $('#balconies').val(step3.balconies).find(`option[value= ${step3.balconies} ]`).attr('selected', true);
+    $('#totalFloors').val(step3.totalFloors).find(`option[value= ${step3.totalFloors} ]`).attr('selected', true);
+    $('#parking').val(step3.parking).find(`option[value= ${step3.parking} ]`).attr('selected', true);
+    $('#availability').val(step3.availability).find(`option[value= ${step3.availability} ]`).attr('selected', true);
+    $('#flooring').val(step3.flooring).find(`option[value= ${step3.flooring} ]`).attr('selected', true);
+    //$('#bedrooms').find(`<option value="${step3.bedrooms}">${step3.bedrooms}</option>`).attr('selected', 'selected');
     var step4 = onlineMakaan.getLsData('form_step_four');
     $('#price').val(step4.price);
     $('#description').val(step4.description);
 
+    var amenities =  onlineMakaan.getLsData('amenities');
+    
+    var amentiesId = ['WaterStorage', 'VisitorParking', 'Park', 'FengShui', 'WasteDisposal', 'PrivateGarden', 'WaterHarvesting', 'MaintenanceStaff', 'Security', 'AirConditioned', 'Pipedgas', 'wifi', 'Waterpurifie', 'SwimmingPool', 'GYM', 'Clubhouse', 'SecurityPersonnel', 'BankAttached', 'Municipalcorporation', 'Borewell', 'Garden', 'MainRoad', 'Club', 'Pool', 'Others', 'gatedsociety', 'CornerProperty', 'PetFriendly', 'WheelchairFriendly'];
+
+    $.each(amentiesId, function (i, id) {
+        $.each(amenities, function (i, val) {
+            if($("#" + id).val() == val){
+                $("#" + id).prop('checked', true);
+            }
+        });
+    });
+
+    var furnishing = onlineMakaan.getLsData('furnishing');
+    // console.log(furnishing);
+    var furnishingId = ['Wardrobs', 'Fans', 'Beds', 'Lights', 'ModulerKitchen', 'Fridge', 'AC', 'Geyser', 'TV', 'Stove', 'WashingMachine', 'WaterPurifire', 'Microwave', 'Curtains', 'Chimney', 'Exhaustfan', 'Sofa', 'DinningTable'];
+
+    $.each(furnishingId, function (i, id) {
+        $.each(furnishing, function (i, val) {
+            if ($("#" + id).val() == val) {
+                $("#" + id).prop('checked', true);
+            }
+        });
+    });
 });
 
 var onlineMakaan = {
