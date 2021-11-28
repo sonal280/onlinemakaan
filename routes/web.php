@@ -32,6 +32,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/start-post-property', [PropertyController::class, 'index']);
     Route::get('/all-property', [PropertyController::class, 'show']);
     Route::get('/edit-property/{pro_id}', [PropertyController::class, 'edit']);
+    
+    Route::get('/property_image/delete/{id}', [PropertyController::class, 'propertyImageDelete']);
 
     Route::get('/property_type', [PropertyController::class, 'fetchPropertyType']);
     Route::get('/fetchListingProperty/{id}', [PropertyController::class, 'fetchListingProperty']);

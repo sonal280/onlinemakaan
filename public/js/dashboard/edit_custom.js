@@ -78,7 +78,9 @@ $('#previous_first').click(function () {
     $('#form-step-1').show();
 });
 
-$('#next_two').click(function () {
+$('#edit_next_two').click(function () {
+    //alert('ghgj');
+    // $('#edit-property-type-1').show();
     var states = $("#states").val();
     var cities = $("#cities").val();
     var locality = $("#locality").val();
@@ -122,13 +124,14 @@ $('#next_two').click(function () {
     var form_step_two = { 'states': states, 'cities': cities, 'locality': locality, 'street': street, 'colonyname': colonyname, 'hideaddress': hideaddress };
     localStorage.setItem('form_step_two', JSON.stringify(form_step_two));
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
-    // console.log('property_details');
-    // console.log(property_type_detail.property_type);
     var property_type = property_type_detail.property_type;
-    // if(property_type_detail.property_type == 1){
-    $(`#property-type-${property_type}`).show();
-    // }
-    $('#form-step-2').hide();
+    if (property_type) {
+        $(`#property-type-${property_type}`).show();
+        $('#form-step-2').hide();
+    }else{
+        $('#edit-property-type-1').show();
+        $('#form-step-2').hide();
+    }
 });
 
 
@@ -181,7 +184,7 @@ $('#next_plot').click(function () {
     $(`#property-type-${property_type}`).hide();
     $('#form-step-4').show();
 });
-$('#next_house').click(function () {
+$('#edit_next_house').click(function () {
     var plotArea = $("#plotArea").val();
     var builtUpArea = $("#builtUpArea").val();
     var bedrooms = $("#bedrooms").val();
@@ -219,8 +222,14 @@ $('#next_house').click(function () {
     localStorage.setItem('form_step_three', JSON.stringify(form_step_three));
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
     var property_type = property_type_detail.property_type;
-    $(`#property-type-${property_type}`).hide();
-    $('#form-step-4').show();
+    if (property_type) {
+        $(`#property-type-${property_type}`).hide();
+        $('#form-step-4').show();
+    }else{
+        $('#edit-property-type-1').hide();
+        $('#edit-form-step-4').show();
+    } 
+
 });
 
 $('#next_flat').click(function () {
@@ -283,7 +292,7 @@ $('#previous_three').click(function () {
     $(`#property-type-${property_type}`).show();
 });
 
-$('#next_four').click(function () {
+$('#edit_next_four').click(function () {
     var price = $("#price").val();
     var description = $("#description").val();
     if (price == '') {
@@ -300,8 +309,8 @@ $('#next_four').click(function () {
     }
     var form_step_four = { 'price': price, 'description': description };
     localStorage.setItem('form_step_four', JSON.stringify(form_step_four));
-    $('#form-step-4').hide();
-    $('#form-step-5').show();
+    $('#edit-form-step-4').hide();
+    $('#edit-form-step-5').show();
 });
 
 $('#previous_four').click(function () {
@@ -309,7 +318,7 @@ $('#previous_four').click(function () {
     $('#form-step-4').show();
 });
 
-$('#next_five').click(function () {
+$('#edit_next_five').click(function () {
     var amenities = [];
     $('input[name="amenities"]:checked').each(function () {
 
@@ -327,8 +336,8 @@ $('#next_five').click(function () {
     localStorage.setItem('amenities', JSON.stringify(amenities));
     localStorage.setItem('furnishing', JSON.stringify(furnishing));
     //console.log($('input[name="amenities"]:checked').serialize());
-    $('#form-step-6').show();
-    $('#form-step-5').hide();
+    $('#edit-form-step-6').show();
+    $('#edit-form-step-5').hide();
 });
 
 $("#previous_last_step").click(function () {
@@ -350,47 +359,71 @@ $("#furnishing").change(function () {
 
 
 $('document').ready(() => {
-
-    $.ajax({
-        url: '/property_type',
-        success: function (result) {
-            var data = onlineMakaan.getLsData('form-step-1');
-            if (data) {
-      
-                $('.property_type').find('option').remove();
-               
-                    $.each(result, function (i, val) {
-                        if (val.id == data.property_type) {
-                            $('.property_type').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
-                        } else {
-                            $('.property_type').append(`<option value="${val.id}">${val.name}</option>`);
-                        }
-                    });
-                
-
-            }
-        }
-    });
-
-    var step1 = onlineMakaan.getLsData('form-step-1');
     
+        $.ajax({
+            url: '/property_type',
+            success: function (result) {
+                var data = onlineMakaan.getLsData('form-step-1');
+                // if (data) {
+                    var pt = $('.edit_property_type').val();
+                    $('.edit_property_type').find('option').remove();
+                    if (pt) {
+                        $.each(result, function (i, val) {
+                            if (val.id == pt) {
+                                $('.edit_property_type').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
+                            } else {
+                                $('.edit_property_type').append(`<option value="${val.id}">${val.name}</option>`);
+                            }
+                        });
+                    }else{
+                        $.each(result, function (i, val) {
+                            if (val.id == data.property_type) {
+                                $('.edit_property_type').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
+                            } else {
+                                $('.edit_property_type').append(`<option value="${val.id}">${val.name}</option>`);
+                            }
+                        });
+                    }
+                    
+                // }
+            }
+        });
+    
+    var step1 = onlineMakaan.getLsData('form-step-1');
+    var pt = $('.edit_property_type').val();
+    if (pt){
+        var property_type = $('.edit_property_type').val();
+    }else{
+        var property_type = step1.property_type;
+    }
+
     $.ajax({
-        url: '/fetchListingProperty/' + step1.property_type,
+        url: '/fetchListingProperty/' + property_type,
         success: function (result) {
             console.log(result);
             // console.log(step1.pre_property_listingtypes);
             // if (step1) {
-            $('.pre_property_listingtypes').find('option').remove();
-           
-
-                $.each(result, function (i, val) {
-                    if (val.id == step1.pre_property_listingtypes) {
-                        $('.pre_property_listingtypes').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
-                    } else {
-                        $('.pre_property_listingtypes').append(`<option value="${val.id}">${val.name}</option>`);
-                    }
-                });
-            
+                $('.edit_pre_property_listingtypes').find('option').remove();
+                var listing_property_id = $('#edit_listing_property_id').val();
+                if (listing_property_id) {
+                    
+                    $.each(result, function (i, val) {
+                        if (val.id == listing_property_id) {
+                            $('.edit_pre_property_listingtypes').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
+                        } else {
+                            $('.edit_pre_property_listingtypes').append(`<option value="${val.id}">${val.name}</option>`);
+                        }
+                    });
+                }else{
+               
+                    $.each(result, function (i, val) {
+                        if (val.id == step1.pre_property_listingtypes) {
+                            $('.edit_pre_property_listingtypes').append(`<option value="${val.id}" selected="selected">${val.name}</option>`);
+                        } else {
+                            $('.edit_pre_property_listingtypes').append(`<option value="${val.id}">${val.name}</option>`);
+                        }
+                    });
+                }
             // }
         }
     });
@@ -400,48 +433,77 @@ $('document').ready(() => {
         url: '/states',
         success: function (result) {
             var data = onlineMakaan.getLsData('form_step_two');
-            // console.log(data);
-            if (data) {
-                $('#states').find('option').remove();
+            var editState = $('#edit_states').val();
+
+            if (editState) {
+                $('#edit_states').find('option').remove();
+                $.each(result, function (i, val) {
+                    // console.log(val);
+                    if (val.id == editState) {
+                        // console.log(val);return false;
+                        $('#edit_states').append(`<option value="${val.id}" selected="selected">${val.state}</option>`);
+                    }
+                    else{
+                        $('#edit_states').append(`<option value="${val.id}">${val.state}</option>`);
+                    }
+                });
+            }else{
                 $.each(result, function (i, val) {
                     // console.log(val);
                     if (val.id == data.states) {
                         // console.log(val);return false;
-                        $('#states').append(`<option value="${val.id}" selected="selected">${val.state}</option>`);
+                        $('#edit_states').append(`<option value="${val.id}" selected="selected">${val.state}</option>`);
                     }
                     else {
-                        $('#states').append(`<option value="${val.id}">${val.state}</option>`);
+                        $('#edit_states').append(`<option value="${val.id}">${val.state}</option>`);
                     }
-                })
+                });
             }
         }
     });
-
+    
     var step2 = onlineMakaan.getLsData('form_step_two');
+    var editState = $('#edit_states').val();
+    if (editState) {
+        var state = editState;
+    }else{
+        var state = step2.states;
+    }
+    var editCity = $('#edit_city').val();
     // console.log(step2);
     // return false;
     $.ajax({
-        url: '/fetchListingCities/' + step2.states,
+        url: '/fetchListingCities/' + state,
         success: function (result) {
             // console.log(step2);
             // return false;
-            if (step2) {
-                $('#cities').find('option').remove();
+            $('#cities').find('option').remove();
+            if (editCity) {
+                // alert('vvjvj');
+                $.each(result, function (i, val) {
+                    console.log(val);
+                    if (val.id == editCity) {
+                        $('#edit_cities').append(`<option value="${val.id}" selected="selected">${val.district}</option>`);
+                    } else {
+                        $('#edit_cities').append(`<option value="${val.id}">${val.district}</option>`);
+                    }
+                });
+            }else{
                 $.each(result, function (i, val) {
                     console.log(val);
                     if (val.id == step2.cities) {
-                        $('#cities').append(`<option value="${val.id}" selected="selected">${val.district}</option>`);
+                        $('#edit_cities').append(`<option value="${val.id}" selected="selected">${val.district}</option>`);
                     } else {
-                        $('#cities').append(`<option value="${val.id}">${val.district}</option>`);
+                        $('#edit_cities').append(`<option value="${val.id}">${val.district}</option>`);
                     }
                 });
             }
         }
     });
 
+   
 
-
-
+   
 
 
     var step2 = onlineMakaan.getLsData('form_step_two');
@@ -465,13 +527,13 @@ $('document').ready(() => {
     $('#price').val(step4.price);
     $('#description').val(step4.description);
 
-    var amenities = onlineMakaan.getLsData('amenities');
-
+    var amenities =  onlineMakaan.getLsData('amenities');
+    
     var amentiesId = ['WaterStorage', 'VisitorParking', 'Park', 'FengShui', 'WasteDisposal', 'PrivateGarden', 'WaterHarvesting', 'MaintenanceStaff', 'Security', 'AirConditioned', 'Pipedgas', 'wifi', 'Waterpurifie', 'SwimmingPool', 'GYM', 'Clubhouse', 'SecurityPersonnel', 'BankAttached', 'Municipalcorporation', 'Borewell', 'Garden', 'MainRoad', 'Club', 'Pool', 'Others', 'gatedsociety', 'CornerProperty', 'PetFriendly', 'WheelchairFriendly'];
 
     $.each(amentiesId, function (i, id) {
         $.each(amenities, function (i, val) {
-            if ($("#" + id).val() == val) {
+            if($("#" + id).val() == val){
                 $("#" + id).prop('checked', true);
             }
         });
@@ -531,6 +593,25 @@ var onlineMakaan = {
 
 
 }
+
+$('#add_more_images').click(function () {
+    $('#photouploader').show();
+    $(this).hide();
+})
+
+function remove(ele, image_id) {
+    if (confirm('Do you really want to remove this')) {
+        // var token = "{{ csrf_token() }}";
+        $.ajax({
+            url: '/property_image/delete/' + image_id,
+            method: 'get',
+            success: function (result) {
+                $('pro_image_' + result).remove();
+            }
+        });   
+    }
+}
+
 
 
 $(function () {
@@ -616,11 +697,11 @@ $('#propertyForm').submit(function (e) {
     $('#divMsg').css({
         'position': 'absolute',
         'top': '0px',
-        'left': '200px',
+        'left':'200px',
     });
 
     $('#divMsg img').css({
-        'height': '250px',
+        'height' : '250px',
         'width': '250px'
     });
 
@@ -642,7 +723,7 @@ $('#propertyForm').submit(function (e) {
                 'You clicked the button!',
                 'success'
             );
-
+            
             $(".swal-button--confirm").click(function () {
                 window.location.href = '/dashboard';
             });

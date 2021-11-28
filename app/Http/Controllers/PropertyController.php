@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
+use App\Models\PropertyImage;
 use App\Repositories\PropertyRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -84,10 +85,12 @@ class PropertyController extends Controller
         $property_data = Property::where('pro_id', $pro_id)->firstOrFail();
         $propertyType = $this->propertyRepository->fetchPropertyType();
         $states = $this->propertyRepository->fetchStates();
-        return view('dashboard.post_property_start_form', [
+        $property_images = PropertyImage::where('pro_id', $pro_id)->get();
+        return view('dashboard.edit.post_property_start_form', [
             'property_data' => $property_data,
             'propertyTypes'  =>  $propertyType,
-            'states'  =>  $states
+            'states'  =>  $states,
+            'property_images' => $property_images,
         ]);
     }
 
@@ -149,6 +152,20 @@ class PropertyController extends Controller
         $newImageName =  time().date('dd-mm-yy').'.'.$file;
         $filepath = $request->file('file')->storeAs('images/property/', $newImageName, 'public');
         die('{"jsonrpc" : "2.0", "result" : null, "id" : "id", "newfilename" : "'."$newImageName".'"}');
+    }
+
+    public function propertyImageDelete($image_id)
+    {
+       
+        //dd($pro_id);
+        $PropertyImage = PropertyImage::find($image_id);
+        $result = $PropertyImage->delete();
+        if($result){
+            $msg = $image_id;
+        }else {
+            $msg = 'Oops something went wrong';
+        }
+        return $msg;
     }
 
 }
