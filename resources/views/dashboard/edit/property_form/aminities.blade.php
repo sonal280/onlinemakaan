@@ -241,7 +241,7 @@
 
                 <div class="row">
                     <div class="col-md-6">
-                        <button class="btn btn-primary previous pull-left" id="previous_four">Previous</button>
+                        <button class="btn btn-primary previous pull-left" id="edit_previous_four">Previous</button>
                     </div>
                     <div class="col-md-6">
                         <button class="btn btn-primary Next pull-right" id="edit_next_five">Next</button>

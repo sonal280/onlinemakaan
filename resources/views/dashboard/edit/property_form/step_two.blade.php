@@ -1,5 +1,5 @@
 
-<div class="card-body" id="form-step-2" style="display: none;">
+<div class="card-body" id="edit-form-step-2" style="display: none;">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -74,7 +74,7 @@
 
             <div class="row">
               <div class="col-md-6">
-                <button class="btn btn-primary previous pull-left" id="previous_first">Previous</button>
+                <button class="btn btn-primary previous pull-left" id="edit_previous_first">Previous</button>
               </div>
               <div class="col-md-6">
                 <button class="btn btn-primary Next pull-right" id="edit_next_two">Next</button>

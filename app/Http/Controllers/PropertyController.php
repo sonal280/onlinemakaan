@@ -121,7 +121,8 @@ class PropertyController extends Controller
     {
 
         $propertyType = $this->propertyRepository->fetchPropertyType();
-       return $propertyType;
+        return $propertyType;
+    // return json_encode($propertyType);
     }
 
     public function fetchListingProperty($id)

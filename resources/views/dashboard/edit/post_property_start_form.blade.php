@@ -4,7 +4,7 @@
 @section('breadcrumb', 'Select Property Category')
 @section('heading', 'Post Property')
 @section('content')
-        <div class="card-body" id="form-step-1">
+        <div class="card-body" id="edit-form-step-1">
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group">
@@ -42,7 +42,7 @@
               </div>
             </div>
 
-            <button class="btn btn-primary" id="startpostbtn">Start for post property</button>
+            <button class="btn btn-primary" id="editstartpostbtn">Start for post property</button>
         </div>
 
   

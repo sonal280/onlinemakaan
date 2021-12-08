@@ -1,5 +1,5 @@
 
-    <div class="card-body" id="property-type-3" style="display: none;">
+    <div class="card-body" id="edit-property-type-3" style="display: none;">
         <div class="row">
             <div class="col-md-8">
                     <div class='row row-pad'>
@@ -49,10 +49,10 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <button class="btn btn-primary previous pull-left" id="previous_plot">Previous</button>
+                            <button class="btn btn-primary previous pull-left" id="edit_previous_plot">Previous</button>
                         </div>
                         <div class="col-md-6">
-                            <button class="btn btn-primary Next pull-right" id="next_plot">Next</button>
+                            <button class="btn btn-primary Next pull-right" id="edit_next_plot">Next</button>
                         </div>
                     </div>
             </div>
