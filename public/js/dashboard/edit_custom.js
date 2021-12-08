@@ -34,26 +34,26 @@ $('.property_type').change(function () {
 
 
 
-$('#states').change(function () {
+$('#edit_states').change(function () {
     $('.select2-selection').removeClass('errorDiv');
     $('#states_span').removeClass('errorColor');
     $('#states_span').hide();
     var state_id = $(this).val();
-    $('#cities').find('option').remove();
+    $('#edit_cities').find('option').remove();
     $.ajax({
         url: '/fetchListingCities/' + state_id,
         success: function (result) {
             //  console.log(result);
             //  return false;
             $.each(result, function (index, value) {
-                $('#cities').append(`<option value="${value.id}">${value.district}</option>`)
+                $('#edit_cities').append(`<option value="${value.id}">${value.district}</option>`)
             });
         }
     });
 });
 
-$('#startpostbtn').click(function () {
-    var property_type = $('.property_type').val();
+$('#editstartpostbtn').click(function () {
+    var property_type = $('.edit_property_type').val();
     if (property_type == 0) {
         $('#property_type_span').show();
         $('.select2-selection').addClass('errorDiv');
@@ -64,29 +64,29 @@ $('#startpostbtn').click(function () {
         $('.select2-selection').removeClass('errorDiv');
         $('.property_type_span').removeClass('errorColor');
         $('#property_type_span').hide();
-        var pre_property_listingtypes = $('.pre_property_listingtypes').val();
+        var pre_property_listingtypes = $('.edit_pre_property_listingtypes').val();
         var form_step_1 = { 'property_type': property_type, 'pre_property_listingtypes': pre_property_listingtypes };
         localStorage.setItem('form-step-1', JSON.stringify(form_step_1));
-        $('#form-step-2').show();
-        $('#form-step-1').hide();
+        $('#edit-form-step-2').show();
+        $('#edit-form-step-1').hide();
     }
 
 });
 
-$('#previous_first').click(function () {
-    $('#form-step-2').hide();
-    $('#form-step-1').show();
+$('#edit_previous_first').click(function () {
+    $('#edit-form-step-2').hide();
+    $('#edit-form-step-1').show();
 });
 
 $('#edit_next_two').click(function () {
     //alert('ghgj');
     // $('#edit-property-type-1').show();
-    var states = $("#states").val();
-    var cities = $("#cities").val();
-    var locality = $("#locality").val();
-    var street = $("#street").val();
-    var colonyname = $("#colonyname").val();
-    var hideaddress = $("#hideaddress").val();
+    var states = $("#edit_states").val();
+    var cities = $("#edit_cities").val();
+    var locality = $("#edit_locality").val();
+    var street = $("#edit_street").val();
+    var colonyname = $("#edit_colonyname").val();
+    var hideaddress = $("#edit_hideaddress").val();
 
     console.log(states);
     if (states == 0) {
@@ -125,32 +125,33 @@ $('#edit_next_two').click(function () {
     localStorage.setItem('form_step_two', JSON.stringify(form_step_two));
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
     var property_type = property_type_detail.property_type;
+
     if (property_type) {
-        $(`#property-type-${property_type}`).show();
-        $('#form-step-2').hide();
+        $(`#edit-property-type-${property_type}`).show();
+        $('#edit-form-step-2').hide();
     }else{
         $('#edit-property-type-1').show();
-        $('#form-step-2').hide();
+        $('#edit-form-step-2').hide();
     }
 });
 
 
-$('#previous_house').click(function () {
-    $('#property-type-1').hide();
-    $('#form-step-2').show();
+$('#edit_previous_house').click(function () {
+    $('#edit_property-type-1').hide();
+    $('#edit-form-step-2').show();
 });
 
-$('#previous_flat').click(function () {
-    $('#property-type-2').hide();
-    $('#form-step-2').show();
+$('#edit_previous_flat').click(function () {
+    $('#edit-property-type-2').hide();
+    $('#edit-form-step-2').show();
 });
 
 
-$('#previous_plot').click(function () {
-    $('#property-type-3').hide();
-    $('#form-step-2').show();
+$('#edit_previous_plot').click(function () {
+    $('#edit-property-type-3').hide();
+    $('#edit-form-step-2').show();
 });
-$('#next_plot').click(function () {
+$('#edit_next_plot').click(function () {
     var plotArea = $("#plotareaa").val();
     var floorallowed = $("#floorallowed").val();
     var possession = $("#possession").val();
@@ -181,8 +182,8 @@ $('#next_plot').click(function () {
     localStorage.setItem('form_step_three', JSON.stringify(form_step_three));
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
     var property_type = property_type_detail.property_type;
-    $(`#property-type-${property_type}`).hide();
-    $('#form-step-4').show();
+    $(`#edit-property-type-${property_type}`).hide();
+    $('#edit-form-step-4').show();
 });
 $('#edit_next_house').click(function () {
     var plotArea = $("#plotArea").val();
@@ -223,8 +224,8 @@ $('#edit_next_house').click(function () {
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
     var property_type = property_type_detail.property_type;
     if (property_type) {
-        $(`#property-type-${property_type}`).hide();
-        $('#form-step-4').show();
+        $(`#edit-property-type-${property_type}`).hide();
+        $('#edit-form-step-4').show();
     }else{
         $('#edit-property-type-1').hide();
         $('#edit-form-step-4').show();
@@ -285,16 +286,16 @@ $('#next_flat').click(function () {
 });
 
 
-$('#previous_three').click(function () {
+$('#edit_previous_three').click(function () {
     var property_type_detail = JSON.parse(localStorage.getItem('form-step-1'));
     var property_type = property_type_detail.property_type;
-    $('#form-step-4').hide();
-    $(`#property-type-${property_type}`).show();
+    $('#edit-form-step-4').hide();
+    $(`#edit-property-type-${property_type}`).show();
 });
 
 $('#edit_next_four').click(function () {
-    var price = $("#price").val();
-    var description = $("#description").val();
+    var price = $("#edit-price").val();
+    var description = $("#edit-description").val();
     if (price == '') {
         onlineMakaan.setError('price');
         return false;
@@ -313,9 +314,9 @@ $('#edit_next_four').click(function () {
     $('#edit-form-step-5').show();
 });
 
-$('#previous_four').click(function () {
-    $('#form-step-5').hide();
-    $('#form-step-4').show();
+$('#edit_previous_four').click(function () {
+    $('#edit-form-step-5').hide();
+    $('#edit-form-step-4').show();
 });
 
 $('#edit_next_five').click(function () {
@@ -340,9 +341,9 @@ $('#edit_next_five').click(function () {
     $('#edit-form-step-5').hide();
 });
 
-$("#previous_last_step").click(function () {
-    $('#form-step-6').hide();
-    $('#form-step-5').show();
+$("#edit_previous_last_step").click(function () {
+    $('#edit-form-step-6').hide();
+    $('#edit-form-step-5').show();
 });
 
 
@@ -359,7 +360,7 @@ $("#furnishing").change(function () {
 
 
 $('document').ready(() => {
-    
+
         $.ajax({
             url: '/property_type',
             success: function (result) {
@@ -606,12 +607,17 @@ function remove(ele, image_id) {
             url: '/property_image/delete/' + image_id,
             method: 'get',
             success: function (result) {
-                $('pro_image_' + result).remove();
+                $(`#pro_image_${result}`).hide();
             }
         });   
     }
 }
 
+
+var uploaded_images = $(`#uploaded_images`).html();
+if (uploaded_images) {
+    $(`#uploaded_images`).css('display', 'none');
+}
 
 
 $(function () {

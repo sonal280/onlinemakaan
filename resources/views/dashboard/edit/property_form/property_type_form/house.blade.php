@@ -181,7 +181,7 @@
 
             <div class="row">
               <div class="col-md-6">
-                <button class="btn btn-primary previous pull-left" id="previous_house">Previous</button>
+                <button class="btn btn-primary previous pull-left" id="edit_previous_house">Previous</button>
               </div>
               <div class="col-md-6">
                 <button class="btn btn-primary Next pull-right" id="edit_next_house">Next</button>

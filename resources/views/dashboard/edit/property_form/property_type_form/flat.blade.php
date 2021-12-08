@@ -1,4 +1,4 @@
-<div class="card-body" id="property-type-2" style="display: none;">
+<div class="card-body" id="edit-property-type-2" style="display: none;">
             <div class="row">
               <div class="col-md-4">
                 <div class="form-group">
@@ -130,10 +130,10 @@
 
             <div class="row">
               <div class="col-md-6">
-                <button class="btn btn-primary previous pull-left" id="previous_flat">Previous</button>
+                <button class="btn btn-primary previous pull-left" id="edit_previous_flat">Previous</button>
               </div>
               <div class="col-md-6">
-                <button class="btn btn-primary Next pull-right" id="next_flat">Next</button>
+                <button class="btn btn-primary Next pull-right" id="edit_next_flat">Next</button>
               </div>
             </div>
         </div>
