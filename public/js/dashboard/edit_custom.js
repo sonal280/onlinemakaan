@@ -606,7 +606,7 @@ function remove(ele, image_id) {
             url: '/property_image/delete/' + image_id,
             method: 'get',
             success: function (result) {
-                $('pro_image_' + result).remove();
+                $(`#pro_image_${result}`).hide();
             }
         });   
     }
