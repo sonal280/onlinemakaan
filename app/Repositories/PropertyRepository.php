@@ -101,9 +101,10 @@ class PropertyRepository implements PropertyRepositoryInterface{
         
     }
 
-    public function getAllProperty()
+    public function getAllProperty($userid)
     {
-        $property = Property::all();
+        $property = Property::where('guest_user', $userid)->get();
+        
         return $property;
     }
     

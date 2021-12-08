@@ -14,40 +14,11 @@
             <div class="card-header">
               <h3 class="card-title">Your Properties: </h3>
             </div>
-        
+        <?php 
+        echo "<pre>";
+        print_r($all_property);?>
 
-          <div class="card">
           
-            <!-- /.card-header -->
-            <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                <tr>
-                  <th>Property</th>
-                  <th>Property Image</th>
-                  <th>Action</th>
-                </tr>
-                </thead>
-                <tbody>
-               @foreach($all_property as $property)
-                  <tr>
-                    <td>{{$property->pro_id}}</td>
-                    <td><img src="https://www.w3schools.com/images/lamp.jpg" alt="Lamp" width="32" height="32"></td>
-                    <td><a href="/edit-property/{{$property->pro_id}}">EDIT</a> | <a href="https://www.w3schools.com">DELETE</a></td>
-                </tr>
-               @endforeach  
-                </tbody>
-                <tfoot>
-                <tr>
-                  <th>Property</th>
-                  <th>Property Image</th>
-                  <th>Action</th>
-                </tr>
-                </tfoot>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
           <!-- /.card -->
         </div>
         <!-- /.col -->
@@ -55,7 +26,33 @@
       <!-- /.row -->
     </section>
     <!-- /.content -->
-
+    <section class="content">
+      <div class="container-fluid">
+        @foreach($all_property as $property)
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card card-primary card-outline">
+              <div class="card-header">
+                <h3 class="card-title">
+                  
+                  <?=$property->bedroom?>, Flat For Rent in Internet Explorer, BADGAN 
+                  <i class="fas fa-edit"></i>
+                </h3>
+              </div>
+              <div class="card-body">
+                
+                <div class="text-muted mt-3">
+                  Instructions for how to use modals are available on the
+                  <a href="http://getbootstrap.com/javascript/#modals">Bootstrap documentation</a>
+                </div>
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+        </div>
+        @endforeach
+            
+    </section>
 
 </div>
    

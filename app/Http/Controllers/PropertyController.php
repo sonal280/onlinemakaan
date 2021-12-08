@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Repositories\MailRepository;
 use App\Repositories\PropertyRepositoryInterface;
+use App\Repositories\UserRepositoryInterface;
 
 class PropertyController extends Controller
 {
@@ -18,11 +19,12 @@ class PropertyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private $propertyRepository, $mailRepository;
-    public function __construct(PropertyRepositoryInterface $propertyRepository, MailRepository $mailRepository)
+    private $propertyRepository, $mailRepository, $userRepository;
+    public function __construct(PropertyRepositoryInterface $propertyRepository, MailRepository $mailRepository, UserRepositoryInterface $userRepository)
     {
         $this->propertyRepository = $propertyRepository;
         $this->mailRepository = $mailRepository;
+        $this->userRepository = $userRepository;
     }
 
     public function index()
@@ -68,9 +70,12 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        $all_property = $this->propertyRepository->getAllProperty();
+        $user =  $this->userRepository->currentUser();
+        $all_property = $this->propertyRepository->getAllProperty($user->id);
+       
+        //dd($user);
         return view('dashboard.all_property', [
-            'all_property' => $all_property
+            'all_property' => $all_property,
         ]);
     }
 
